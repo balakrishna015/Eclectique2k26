@@ -1,0 +1,269 @@
+import { useState } from "react";
+import { motion } from "framer-motion";
+import TextReveal from "../components/TextReveal";
+import EventModal, { type EventData } from "../components/EventModal";
+
+// --- FULL DATASET ---
+const EVENTS_DATA: EventData[] = [
+  // Workshops
+  {
+    id: 1,
+    title: "EV TECHNOLOGY",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1000",
+    fee: "₹ 500/- (Individual)",
+    teamSize: "Individual",
+    timeline: "10:00 AM - 4:00 PM",
+    about: "An immersive workshop involving the breakdown coverage of Electric Vehicles. From Battery Management Systems (BMS) to Motor Design and Power Controllers, get hands-on experience in the future of mobility.",
+    rules: ["Laptop is mandatory", "Software installation guide will be provided", "Certification on completion"],
+    coordinators: [{ name: "K. Reddy", phone: "+91 99999 88888" }, { name: "S. Kumar", phone: "+91 88888 77777" }],
+    regLink: "https://forms.google.com/ev-tech"
+  },
+  {
+    id: 2,
+    title: "TABLEAU",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+    fee: "₹ 400/- (Individual)",
+    teamSize: "Individual",
+    timeline: "10:00 AM - 1:00 PM",
+    about: "Master the art of Data Visualization. Learn how to connect to data sources, create impactful dashboards, and tell stories with data using Tableau.",
+    rules: ["Tableau Public must be installed", "Dataset will be provided prior to session"],
+    coordinators: [{ name: "P. Sharma", phone: "+91 77777 66666" }, { name: "A. Singh", phone: "+91 66666 55555" }],
+    regLink: "https://forms.google.com/tableau"
+  },
+  // Events
+  {
+    id: 3,
+    title: "WATT VISION",
+    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070",
+    fee: "₹ 200 (Individual)\n₹ 300 (Team of 2)\n₹ 400 (Team of 3)",
+    teamSize: "Max 3 Members",
+    timeline: "9:30 AM - 4:00 PM",
+    about: "The ultimate Project Expo. Showcase your innovative hardware, software, or hybrid projects to a panel of judges and win exciting cash prizes.",
+    rules: ["Prototype demonstration is mandatory", "A3 Poster presentation required", "Abstract deadline: Feb 28th"],
+    coordinators: [{ name: "I. Hariharan", phone: "+91 98765 43210" }, { name: "Uppu Yajusha", phone: "+91 98765 43211" }],
+    regLink: "https://forms.google.com/watt-vision"
+  },
+  {
+    id: 4,
+    title: "BRAIN WAVE",
+    image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=2070",
+    fee: "₹ 150 (Team of 2)",
+    teamSize: "Max 2 Members",
+    timeline: "11:00 AM Onwards",
+    about: "A battle of wits. This technical and general quiz will test your knowledge across various domains. Do you have what it takes to be the mastermind?",
+    rules: ["Prelims will be conducted on paper", "Top 6 teams qualify for stage rounds", "Use of mobiles leads to disqualification"],
+    coordinators: [{ name: "R. Kieran", phone: "+91 12345 67890" }, { name: "L. James", phone: "+91 09876 54321" }],
+    regLink: "https://forms.google.com/brain-wave"
+  },
+  {
+    id: 5,
+    title: "PUZZLE MANIA",
+    image: "https://images.unsplash.com/photo-1611095790444-11a31ea72e61?q=80&w=2071",
+    fee: "₹ 100 (Individual)",
+    teamSize: "Individual",
+    timeline: "2:00 PM - 3:00 PM",
+    about: "For those who love to decode. Solve complex logical puzzles, riddles, and ciphers in a race against time.",
+    rules: ["Time-based evaluation", "Pen and paper will be provided", "No external help allowed"],
+    coordinators: [{ name: "M. Rao", phone: "+91 11223 34455" }, { name: "K. Latha", phone: "+91 55667 78899" }],
+    regLink: "https://forms.google.com/puzzle-mania"
+  },
+  {
+    id: 6,
+    title: "MIND ARENA",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070",
+    fee: "₹ 100 (Individual)",
+    teamSize: "Individual",
+    timeline: "3:00 PM - 4:00 PM",
+    about: "A series of rapid-fire logic games and mini-challenges designed to test your critical thinking under pressure.",
+    rules: ["Judges decision is final", "Points awarded for each mini-game", "Highest cumulative score wins"],
+    coordinators: [{ name: "P. Varun", phone: "+91 99887 76655" }, { name: "J. Swathi", phone: "+91 55443 32211" }],
+    regLink: "https://forms.google.com/mind-arena"
+  },
+  {
+    id: 7,
+    title: "PIXEL LENS",
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000",
+    fee: "₹ 100 (Individual)",
+    teamSize: "Individual",
+    timeline: "All Day",
+    about: "Capture the essence of Eclectique. Use your lens to freeze moments of joy, innovation, and vibrancy. Theme: 'Electrifying Moments'.",
+    rules: ["Photos must be taken during the fest", "Minimal editing allowed", "Metadata must be preserved"],
+    coordinators: [{ name: "D. Charan", phone: "+91 76543 21098" }, { name: "V. Nithin", phone: "+91 89012 34567" }],
+    regLink: "https://forms.google.com/pixel-lens"
+  },
+  {
+    id: 8,
+    title: "ART SPARK",
+    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=2080",
+    fee: "₹ 100 (Individual)",
+    teamSize: "Individual",
+    timeline: "All Day",
+    about: "Unleash your creativity. Painting, sketching, or digital art - show us your vision of the future.",
+    rules: ["Theme will be announced on spot", "Bring your own materials (paper provided)", "Digital artists must bring tablets"],
+    coordinators: [{ name: "S. Priya", phone: "+91 11111 22222" }, { name: "K. Deepa", phone: "+91 33333 44444" }],
+    regLink: "https://forms.google.com/art-spark"
+  }
+];
+
+const Home = () => {
+  const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
+
+  const workshops = EVENTS_DATA.filter(e => e.id <= 2);
+  const events = EVENTS_DATA.filter(e => e.id > 2);
+
+  // Minimalist Card Component
+  const EventCard = ({ item }: { item: EventData }) => (
+    <div className="group relative h-80 rounded-xl overflow-hidden bg-deep-navy border border-white/10 hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(0,243,255,0.2)] transition-all duration-300">
+      <div className="h-2/3 overflow-hidden relative">
+        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+      </div>
+
+      <div className="h-1/3 flex flex-col justify-center items-center relative p-4 bg-[#0a0a0f]">
+        <h3 className="text-xl font-display font-bold text-white mb-3 text-center tracking-wide group-hover:text-neon-cyan transition-colors">{item.title}</h3>
+
+        <div className="flex gap-4">
+          <button
+            onClick={() => setSelectedEvent(item)}
+            className="px-4 py-1.5 border border-neon-cyan text-neon-cyan text-xs font-bold tracking-wider rounded hover:bg-neon-cyan hover:text-black transition-all uppercase"
+          >
+            Know More
+          </button>
+          <a
+            href={item.regLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-1.5 bg-neon-purple text-white text-xs font-bold tracking-wider rounded hover:bg-white hover:text-neon-purple transition-all uppercase"
+          >
+            Register
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="w-full min-h-screen bg-deep-navy overflow-y-auto overflow-x-hidden font-sans">
+
+      {/* HERO SECTION */}
+      <div className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-deep-navy text-white">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-deep-navy to-black opacity-80" />
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
+
+        {/* Glow Orbs */}
+        <motion.div
+          animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-neon-purple/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0.4, 0.2] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[120px]"
+        />
+
+        {/* Content */}
+        <div className="relative z-10 text-center px-4">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-neon-cyan tracking-[0.3em] font-medium mb-4 uppercase text-sm md:text-base"
+          >
+            National Level Technical Symposium
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-5xl md:text-9xl font-display font-black mb-6 tracking-tighter text-white"
+          >
+            ECLECTIQUE
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple block md:inline"> 2K26</span>
+          </motion.h1>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="flex flex-col items-center gap-3 mt-4"
+          >
+            <p className="text-xl md:text-2xl font-light text-gray-300 tracking-wide">JNTU-GV Vizianagaram</p>
+            <p className="text-neon-purple font-bold tracking-widest uppercase border border-neon-purple/30 px-6 py-2 rounded-full bg-neon-purple/5">
+              March 04 & 05, 2026
+            </p>
+          </motion.div>
+        </div>
+
+        {/* Scroll Indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center gap-2 text-gray-500"
+        >
+          <div className="w-[1px] h-16 bg-gradient-to-b from-neon-cyan to-transparent"></div>
+        </motion.div>
+      </div>
+
+      {/* TEXT REVEAL SECTION */}
+      <div className="relative z-20 -mt-20">
+        <TextReveal />
+      </div>
+
+      {/* WORKSHOPS & EVENTS */}
+      <div id="workshops" className="py-20 px-6 bg-deep-navy relative z-10">
+
+        {/* Workshops */}
+        <div className="max-w-6xl mx-auto mb-24">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-[2px] w-12 bg-neon-purple"></div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-widest">WORKSHOPS</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {workshops?.map((ws) => <EventCard key={ws.id} item={ws} />)}
+          </div>
+        </div>
+
+        {/* Events */}
+        <div className="max-w-6xl mx-auto mb-24">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-[2px] w-12 bg-neon-cyan"></div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-white tracking-widest">EVENTS</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {events?.map((ev) => <EventCard key={ev.id} item={ev} />)}
+          </div>
+        </div>
+
+        {/* ABOUT US - GLASS BLOCK */}
+        <div className="max-w-5xl mx-auto mb-12 px-4">
+          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-neon-purple/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+            <h2 className="text-3xl font-display font-bold text-white mb-8 tracking-widest uppercase">About Us</h2>
+            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-8 rounded-full"></div>
+
+            <p className="text-gray-300 leading-8 text-lg md:text-xl font-light max-w-3xl mx-auto">
+              Eclectique 2K26 is the flagship technical symposium of the Department of Electrical & Electronics Engineering at JNTU-GV. Our mission is to bridge the gap between academic theory and industry innovation through competitive events, hands-on workshops, and expert interactions.
+            </p>
+            <p className="mt-8 text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase">Join The Revolution</p>
+          </div>
+        </div>
+
+      </div>
+
+      {/* MODAL */}
+      <EventModal
+        isOpen={!!selectedEvent}
+        onClose={() => setSelectedEvent(null)}
+        data={selectedEvent}
+      />
+
+    </div>
+  );
+};
+
+export default Home;
