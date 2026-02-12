@@ -14,8 +14,8 @@ export interface EventData {
   image: string;
   fee: string;
   teamSize: string;
-  timeline: string;
-  about: string;
+  time: string;
+  description: string;
   rules: string[];
   coordinators: Coordinator[];
   regLink: string;
@@ -101,7 +101,7 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
                 <Calendar size={18} />
                 <span className="text-xs font-bold uppercase tracking-widest text-gray-400">Timeline</span>
               </div>
-              <span className="text-sm text-white font-medium">{data.timeline}</span>
+              <span className="text-sm text-white font-medium">{data.time}</span>
             </div>
           </div>
 
@@ -113,8 +113,8 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`flex-1 py-4 text-sm font-bold uppercase tracking-widest transition-all relative ${activeTab === tab
-                      ? "text-neon-cyan bg-white/5"
-                      : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
+                    ? "text-neon-cyan bg-white/5"
+                    : "text-gray-500 hover:text-gray-300 hover:bg-white/5"
                     }`}
                 >
                   {tab === "coords" ? "Coordinators" : tab}
@@ -138,7 +138,7 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
                     exit={{ opacity: 0, y: -10 }}
                     transition={{ duration: 0.2 }}
                   >
-                    <p className="text-gray-300 leading-7 text-lg">{data.about}</p>
+                    <p className="text-gray-300 leading-7 text-lg">{data.description}</p>
                   </motion.div>
                 )}
 

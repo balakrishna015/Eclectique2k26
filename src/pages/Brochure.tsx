@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const Brochure = () => {
   return (
-    <div className="min-h-screen bg-deep-navy pt-24 pb-20 px-8 flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen pt-24 pb-20 px-8 flex flex-col items-center justify-center relative overflow-hidden">
       {/* Ambient Background */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-neon-cyan/20 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-neon-purple/20 rounded-full blur-[150px] pointer-events-none" />

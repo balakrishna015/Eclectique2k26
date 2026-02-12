@@ -12,7 +12,7 @@ const sponsors = [
 
 const Sponsors = () => {
   return (
-    <div className="min-h-screen bg-deep-navy pt-24 px-4 pb-20">
+    <div className="min-h-screen pt-24 px-4 pb-20">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}

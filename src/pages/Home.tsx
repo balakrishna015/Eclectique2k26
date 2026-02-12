@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import TextReveal from "../components/TextReveal";
 import EventModal, { type EventData } from "../components/EventModal";
+import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 // --- FULL DATASET ---
 const EVENTS_DATA: EventData[] = [
@@ -9,98 +10,122 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 1,
     title: "EV TECHNOLOGY",
-    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&q=80&w=1000",
-    fee: "₹ 500/- (Individual)",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072",
+    fee: "₹ 999/-",
     teamSize: "Individual",
-    timeline: "10:00 AM - 4:00 PM",
-    about: "An immersive workshop involving the breakdown coverage of Electric Vehicles. From Battery Management Systems (BMS) to Motor Design and Power Controllers, get hands-on experience in the future of mobility.",
+    time: "Mar 4, 9:00 AM - 5:00 PM",
+    description: "An immersive workshop involving the breakdown coverage of Electric Vehicles. Hands-on experience in BMS, Motor Design, and Power Controllers.",
     rules: ["Laptop is mandatory", "Software installation guide will be provided", "Certification on completion"],
-    coordinators: [{ name: "K. Reddy", phone: "+91 99999 88888" }, { name: "S. Kumar", phone: "+91 88888 77777" }],
-    regLink: "https://forms.google.com/ev-tech"
+    coordinators: [
+      { name: "Koppisetti Karthikeya", phone: "+91 86887 85636" },
+      { name: "Nakka Keerthana", phone: "+91 93818 85336" }
+    ],
+    regLink: "https://forms.google.com/ev-workshop"
   },
   {
     id: 2,
     title: "TABLEAU",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
-    fee: "₹ 400/- (Individual)",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
+    fee: "₹ 499/-",
     teamSize: "Individual",
-    timeline: "10:00 AM - 1:00 PM",
-    about: "Master the art of Data Visualization. Learn how to connect to data sources, create impactful dashboards, and tell stories with data using Tableau.",
+    time: "Mar 4, 9:00 AM - 5:00 PM",
+    description: "Master the art of Data Visualization. Learn how to connect data sources, create impactful dashboards, and tell stories with data using Tableau.",
     rules: ["Tableau Public must be installed", "Dataset will be provided prior to session"],
-    coordinators: [{ name: "P. Sharma", phone: "+91 77777 66666" }, { name: "A. Singh", phone: "+91 66666 55555" }],
+    coordinators: [
+      { name: "S. B. Karthikeya Sarma", phone: "+91 94915 02203" },
+      { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
+    ],
     regLink: "https://forms.google.com/tableau"
   },
   // Events
   {
     id: 3,
     title: "WATT VISION",
-    image: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070",
-    fee: "₹ 200 (Individual)\n₹ 300 (Team of 2)\n₹ 400 (Team of 3)",
-    teamSize: "Max 3 Members",
-    timeline: "9:30 AM - 4:00 PM",
-    about: "The ultimate Project Expo. Showcase your innovative hardware, software, or hybrid projects to a panel of judges and win exciting cash prizes.",
+    image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069",
+    fee: "₹ 150 (1) | ₹ 250 (2) | ₹ 350 (3-4)",
+    teamSize: "Max 4 Members",
+    time: "Mar 5, 10:00 AM",
+    description: "Showcase your innovative projects and ideas to a panel of experts. A platform to display your technical prowess.",
     rules: ["Prototype demonstration is mandatory", "A3 Poster presentation required", "Abstract deadline: Feb 28th"],
-    coordinators: [{ name: "I. Hariharan", phone: "+91 98765 43210" }, { name: "Uppu Yajusha", phone: "+91 98765 43211" }],
+    coordinators: [
+      { name: "B. Teja", phone: "+91 83742 30526" },
+      { name: "I. Hariharan", phone: "+91 96767 59375" }
+    ],
     regLink: "https://forms.google.com/watt-vision"
   },
   {
     id: 4,
     title: "BRAIN WAVE",
     image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=2070",
-    fee: "₹ 150 (Team of 2)",
-    teamSize: "Max 2 Members",
-    timeline: "11:00 AM Onwards",
-    about: "A battle of wits. This technical and general quiz will test your knowledge across various domains. Do you have what it takes to be the mastermind?",
+    fee: "₹ 50/-",
+    teamSize: "Individual",
+    time: "Mar 5, 11:00 AM",
+    description: "Test your knowledge in technical and general trivia. A battle of wits to claim the title of the smartest mind.",
     rules: ["Prelims will be conducted on paper", "Top 6 teams qualify for stage rounds", "Use of mobiles leads to disqualification"],
-    coordinators: [{ name: "R. Kieran", phone: "+91 12345 67890" }, { name: "L. James", phone: "+91 09876 54321" }],
+    coordinators: [
+      { name: "K. P. Chaitanya Varma", phone: "+91 93475 88627" },
+      { name: "Sheik Aziz", phone: "+91 99083 44734" }
+    ],
     regLink: "https://forms.google.com/brain-wave"
   },
   {
     id: 5,
     title: "PUZZLE MANIA",
-    image: "https://images.unsplash.com/photo-1611095790444-11a31ea72e61?q=80&w=2071",
-    fee: "₹ 100 (Individual)",
-    teamSize: "Individual",
-    timeline: "2:00 PM - 3:00 PM",
-    about: "For those who love to decode. Solve complex logical puzzles, riddles, and ciphers in a race against time.",
+    image: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2078",
+    fee: "₹ 50 (Solo) | ₹ 200 (Group of 4)",
+    teamSize: "1 or 4",
+    time: "Mar 5, 2:00 PM",
+    description: "Solve riddles, find clues, and race against time. The ultimate treasure hunt awaits you.",
     rules: ["Time-based evaluation", "Pen and paper will be provided", "No external help allowed"],
-    coordinators: [{ name: "M. Rao", phone: "+91 11223 34455" }, { name: "K. Latha", phone: "+91 55667 78899" }],
+    coordinators: [
+      { name: "A. Manoj Kumar", phone: "+91 99630 13092" },
+      { name: "T. Ramya", phone: "" }
+    ],
     regLink: "https://forms.google.com/puzzle-mania"
   },
   {
     id: 6,
     title: "MIND ARENA",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070",
-    fee: "₹ 100 (Individual)",
+    fee: "₹ 50/-",
     teamSize: "Individual",
-    timeline: "3:00 PM - 4:00 PM",
-    about: "A series of rapid-fire logic games and mini-challenges designed to test your critical thinking under pressure.",
+    time: "Mar 5, 10:00 AM",
+    description: "A series of mind-bending technical challenges designed to push your problem-solving skills to the limit.",
     rules: ["Judges decision is final", "Points awarded for each mini-game", "Highest cumulative score wins"],
-    coordinators: [{ name: "P. Varun", phone: "+91 99887 76655" }, { name: "J. Swathi", phone: "+91 55443 32211" }],
+    coordinators: [
+      { name: "V. K. Praneeth Naidu", phone: "+91 63051 81638" },
+      { name: "D. Satya Durga", phone: "" }
+    ],
     regLink: "https://forms.google.com/mind-arena"
   },
   {
     id: 7,
     title: "PIXEL LENS",
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000",
-    fee: "₹ 100 (Individual)",
+    fee: "₹ 50/-",
     teamSize: "Individual",
-    timeline: "All Day",
-    about: "Capture the essence of Eclectique. Use your lens to freeze moments of joy, innovation, and vibrancy. Theme: 'Electrifying Moments'.",
+    time: "Mar 4-5 (All Day)",
+    description: "Capture the essence of Eclectique. A photography contest to showcase your unique perspective.",
     rules: ["Photos must be taken during the fest", "Minimal editing allowed", "Metadata must be preserved"],
-    coordinators: [{ name: "D. Charan", phone: "+91 76543 21098" }, { name: "V. Nithin", phone: "+91 89012 34567" }],
+    coordinators: [
+      { name: "Ch. Kuldeep", phone: "+91 63019 58061" },
+      { name: "K. Sushmitha", phone: "" }
+    ],
     regLink: "https://forms.google.com/pixel-lens"
   },
   {
     id: 8,
     title: "ART SPARK",
-    image: "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?q=80&w=2080",
-    fee: "₹ 100 (Individual)",
+    image: "https://images.unsplash.com/photo-1460661631630-8947b5d36e0d?q=80&w=2070",
+    fee: "₹ 50/-",
     teamSize: "Individual",
-    timeline: "All Day",
-    about: "Unleash your creativity. Painting, sketching, or digital art - show us your vision of the future.",
+    time: "Mar 5, 1:00 PM",
+    description: "Unleash your creativity through colors and sketches. A competition for the artist in you.",
     rules: ["Theme will be announced on spot", "Bring your own materials (paper provided)", "Digital artists must bring tablets"],
-    coordinators: [{ name: "S. Priya", phone: "+91 11111 22222" }, { name: "K. Deepa", phone: "+91 33333 44444" }],
+    coordinators: [
+      { name: "Vakapalili Sanjay", phone: "+91 73966 72320" },
+      { name: "Dupana Bhavya", phone: "" }
+    ],
     regLink: "https://forms.google.com/art-spark"
   }
 ];
@@ -115,7 +140,11 @@ const Home = () => {
   const EventCard = ({ item }: { item: EventData }) => (
     <div className="group relative h-80 rounded-xl overflow-hidden bg-deep-navy border border-white/10 hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(0,243,255,0.2)] transition-all duration-300">
       <div className="h-2/3 overflow-hidden relative">
-        <img src={item.image} alt={item.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+        <ImageWithSkeleton
+          src={item.image}
+          alt={item.title}
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+        />
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
       </div>
 
@@ -143,10 +172,10 @@ const Home = () => {
   );
 
   return (
-    <div className="w-full min-h-screen bg-deep-navy overflow-y-auto overflow-x-hidden font-sans">
+    <div className="w-full min-h-screen bg-transparent overflow-y-auto overflow-x-hidden font-sans">
 
       {/* HERO SECTION */}
-      <div className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-deep-navy text-white">
+      <div className="relative h-screen w-full flex items-center justify-center overflow-hidden text-white bg-gradient-to-b from-transparent via-[#0a0a0f]/50 to-[#0a0a0f]">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-deep-navy to-black opacity-80" />
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
 
@@ -213,7 +242,7 @@ const Home = () => {
       </div>
 
       {/* WORKSHOPS & EVENTS */}
-      <div id="workshops" className="py-20 px-6 bg-deep-navy relative z-10">
+      <div id="workshops" className="py-20 px-6 relative z-10">
 
         {/* Workshops */}
         <div className="max-w-6xl mx-auto mb-24">

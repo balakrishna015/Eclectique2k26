@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import { Instagram, Mail, X as XIcon, Heart, ExternalLink } from "lucide-react";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   const socialLinks = [
     {
       name: "Instagram",
@@ -92,7 +90,7 @@ const Footer = () => {
       {/* Copyright */}
       <div className="border-t border-white/5 pt-8 text-center">
         <p className="text-gray-600 text-xs flex items-center justify-center gap-1">
-          &copy; {currentYear} Eclectique 2K26. Made with <Heart size={12} className="text-neon-purple fill-neon-purple animate-pulse" /> by Technical Team.
+          Eclectique 2K26. Made with <Heart size={12} className="text-neon-purple fill-neon-purple animate-pulse" /> by Krishna.
         </p>
       </div>
     </footer>

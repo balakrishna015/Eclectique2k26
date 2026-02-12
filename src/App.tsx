@@ -32,11 +32,14 @@ const AnimatedRoutes = () => {
   );
 };
 
+import ParticlesBackground from "./components/ParticlesBackground";
+
 function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="bg-deep-navy min-h-screen text-white font-sans selection:bg-neon-cyan selection:text-deep-navy flex flex-col">
+      <ParticlesBackground />
+      <div className="relative z-10 bg-transparent min-h-screen text-white font-sans selection:bg-neon-cyan selection:text-deep-navy flex flex-col">
         <Navbar />
         <div className="flex-grow">
           <AnimatedRoutes />

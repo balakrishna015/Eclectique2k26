@@ -1,101 +1,145 @@
 import { motion } from "framer-motion";
+import { Smartphone } from "lucide-react";
+import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 // --- DATA ---
-const FACULTY_SECTIONS = [
-  { title: "Patrons", members: ["To be updated (Male)", "To be updated (Female)"] },
-  { title: "Chief Patron", members: ["To be updated"] },
-  { title: "Co-Patrons", members: ["To be updated"] },
-  { title: "Faculty Advisors", members: ["To be updated (Male)", "To be updated (Female)"] },
-  { title: "Conveners", members: ["To be updated (Male)", "To be updated (Female)"] },
-  { title: "Co-Conveners", members: ["To be updated (Male)", "To be updated (Female)"] },
+type TeamMember = {
+  name: string;
+  phone?: string;
+  image?: string; // Optional image URL
+};
+
+type SectionData = {
+  title: string;
+  members: TeamMember[];
+};
+
+const FACULTY_SECTIONS: SectionData[] = [
+  { title: "Chief Patron", members: [{ name: "Prof. V. V. Subbarao" }] },
+  { title: "Patron", members: [{ name: "Prof. G. Jaya Suma" }] },
+  { title: "Co-Patrons", members: [{ name: "Prof. R. Rajeswararao" }, { name: "Prof. G. J. N. Nagaraju" }] },
+  { title: "Chairman", members: [{ name: "Dr. V. S. Vakula" }] },
+  { title: "Convenor", members: [{ name: "Dr. K. Srikumar" }] },
+  { title: "Faculty Coordinator", members: [{ name: "Dr. A. Padmaja" }] },
 ];
 
-const STUDENT_SECTIONS = [
-  { title: "Main Coordinators", members: ["Yalangi Chery Nischal", "G. Gowthami"] },
-  { title: "Student Coordinators", members: ["V. Manoj Ram", "P. Hannah Grace"] },
-  { title: "Treasurers", members: ["B. Srikanth", "Vantaku Hemanth Kumar", "S. Manasa"] },
-  { title: "Technical Coordinators", members: ["Yarapathni Balakrishna", "Mohammad Habibuddin", "A. Hemalatha"] },
+const STUDENT_SECTIONS: SectionData[] = [
+  {
+    title: "Main Coordinators",
+    members: [
+      { name: "Yalangi Chery Nischal", phone: "+91 82477 32637" },
+      { name: "G. Gowthami" },
+    ]
+  },
+  {
+    title: "Student Coordinators",
+    members: [
+      { name: "V. Manoj Ram" },
+      { name: "P. Hannah Grace" },
+    ]
+  },
+  {
+    title: "Treasurers",
+    members: [
+      { name: "B. Srikanth" },
+      { name: "Vantaku Hemanth Kumar" },
+      { name: "S. Manasa" },
+    ]
+  },
+  {
+    title: "Technical Coordinators",
+    members: [
+      { name: "Yarapathni Balakrishna" },
+      { name: "Mohammad Habibuddin" },
+      { name: "A. Hema" },
+    ]
+  },
 ];
 
-const EVENT_COORDINATORS = [
-  { title: "Workshop", members: ["Koppisetti Karthikeya", "Suddapalli Bala Karthikeya Sarma", "Nakka Keerthana", "Kanda Varalakshmi"] },
-  { title: "Cultural Events", members: ["Bhargav", "Ganesh", "Sameera Begum"] },
-  { title: "Flash Mob", members: ["Mohan", "N. Laasya", "S. Devisrri"] },
-];
+// --- COMPONENTS ---
 
-const TeamMemberCard = ({ name, role = "Coordinator", delay, size = "normal" }: { name: string, role?: string, delay: number, size?: "normal" | "large" }) => {
-  const isLarge = size === "large";
+const HoloCard = ({ member, role, delay, isFaculty = false }: { member: TeamMember, role: string, delay: number, isFaculty?: boolean }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.4, delay }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay }}
       viewport={{ once: true }}
-      className={`flex flex-col items-center group ${isLarge ? "mb-6" : "mb-2"}`}
+      className={`group relative overflow-hidden bg-[#1a1a2e]/40 backdrop-blur-md border border-white/5 rounded-2xl transition-all duration-300 hover:border-neon-cyan/50 hover:bg-[#1a1a2e]/60 flex flex-col items-center
+        ${isFaculty ? "p-6 aspect-square" : "aspect-[3/4]"}`}
     >
-      <div
-        className={`rounded-full overflow-hidden border-2 border-white/10 group-hover:border-neon-cyan transition-colors duration-300 relative mb-3 bg-white/5 flex items-center justify-center shadow-lg
-        ${isLarge ? "w-40 h-40 md:w-56 md:h-56 border-amber-500/30 group-hover:border-amber-400" : "w-28 h-28 md:w-32 md:h-32"}`}
-      >
-        {/* Placeholder Avatar logic */}
-        <div className={`w-full h-full bg-gradient-to-br from-white/5 to-white/10 flex items-center justify-center`}>
-          <span className={`font-bold text-white/20 group-hover:text-neon-cyan/50 transition-colors ${isLarge ? "text-5xl" : "text-3xl"}`}>
-            {name.charAt(0)}
-          </span>
-        </div>
+      {/* Glow Effect on Hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-neon-cyan/0 via-transparent to-neon-purple/0 group-hover:from-neon-cyan/5 group-hover:to-neon-purple/5 transition-colors duration-500" />
+
+      {/* IMAGE SECTION */}
+      <ImageWithSkeleton
+        src={member.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=random`}
+        alt={member.name}
+        className={`relative z-10 flex items-center justify-center overflow-hidden bg-white/5
+        ${isFaculty
+            ? "w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-white/10 group-hover:border-neon-cyan/50 mb-4"
+            : "w-full h-[65%] rounded-t-xl mb-3"
+          } transition-all duration-300`}
+      />
+
+      {/* TEXT SECTION */}
+      <div className="relative z-10 flex flex-col items-center text-center px-2 w-full">
+        <h3 className={`text-white font-display font-medium tracking-wide leading-tight group-hover:text-neon-cyan transition-colors duration-300
+          ${isFaculty ? "text-xl" : "text-lg md:text-xl"} line-clamp-2`}>
+          {member.name}
+        </h3>
+
+        <div className="h-[1px] w-12 bg-white/10 my-2 group-hover:bg-neon-cyan/50 transition-colors" />
+
+        <p className="text-neon-cyan text-[10px] md:text-xs font-bold uppercase tracking-[0.2em] mb-1">
+          {role}
+        </p>
+
+        {member.phone && (
+          <div className="flex items-center gap-2 mt-2 px-3 py-1 rounded-full bg-white/5 border border-white/5 group-hover:border-neon-purple/30 transition-colors">
+            <Smartphone size={12} className="text-gray-400 group-hover:text-neon-purple" />
+            <span className="text-xs text-gray-300 font-mono">{member.phone}</span>
+          </div>
+        )}
       </div>
-      <h3 className={`font-display font-bold text-white text-center group-hover:text-neon-cyan transition-colors px-1 w-full leading-tight
-        ${isLarge ? "text-xl md:text-2xl" : "text-sm md:text-base"}`}>
-        {name}
-      </h3>
-      <p className={`font-mono font-medium tracking-wide uppercase mt-1 text-center 
-        ${isLarge ? "text-amber-500/80 text-sm md:text-base" : "text-gray-400 text-xs"}`}>
-        {role}
-      </p>
-    </motion.div>
+
+      {/* Decorative Corners for Holographic Feel */}
+      <div className="absolute top-0 left-0 w-2 h-2 border-t border-l border-white/20 group-hover:border-neon-cyan transition-colors" />
+      <div className="absolute top-0 right-0 w-2 h-2 border-t border-r border-white/20 group-hover:border-neon-cyan transition-colors" />
+      <div className="absolute bottom-0 left-0 w-2 h-2 border-b border-l border-white/20 group-hover:border-neon-purple transition-colors" />
+      <div className="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-white/20 group-hover:border-neon-purple transition-colors" />
+    </motion.div >
   );
 };
 
-const SectionTitle = ({ title }: { title: string }) => (
-  <motion.div
-    initial={{ opacity: 0, x: -10 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true }}
-    className="w-full flex items-center justify-center mb-10"
-  >
-    <div className="h-[1px] w-12 bg-white/20"></div>
-    <h2 className="text-xl md:text-2xl font-display font-bold text-white mx-6 uppercase tracking-widest text-center">{title}</h2>
-    <div className="h-[1px] w-12 bg-white/20"></div>
-  </motion.div>
-);
-
-const Section = ({ title, members }: { title: string, members: string[] }) => {
-  // Detect if this is a "VIP" section (Patrons/Faculty) to make blocks bigger
-  const isLarge = title.includes("Patron") || title.includes("Convener") || title.includes("Faculty") || title.includes("Principal");
-
+const Section = ({ title, members, isFaculty = false }: { title: string, members: TeamMember[], isFaculty?: boolean }) => {
   return (
-    <div className="mb-16">
-      <SectionTitle title={title} />
-
-      {/* RESPONSIVE GRID LOGIC:
-          - Mobile: grid-cols-2 (Standard) OR grid-cols-1 (VIP)
-          - Desktop: lg:grid-cols-4 (Standard) OR lg:grid-cols-3 (VIP)
-      */}
-      <div
-        className={`grid gap-3 md:gap-6 mx-auto ${isLarge
-            ? "grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-5xl justify-items-center"
-            : "grid-cols-2 md:grid-cols-3 lg:grid-cols-4 max-w-7xl justify-items-center"
-          }`}
+    <div className="mb-20">
+      <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        className="flex items-center gap-4 mb-8 px-2"
       >
+        <div className="h-8 w-1 bg-neon-cyan rounded-full" />
+        <h2 className="text-2xl md:text-3xl font-display font-bold text-white uppercase tracking-widest">
+          {title}
+        </h2>
+      </motion.div>
+
+      {/* GRID SYSTEM: Strict 2-col on Mobile, 4-col on Laptop */}
+      <div className={`grid gap-4 md:gap-6 
+        ${isFaculty
+          ? "grid-cols-1 md:grid-cols-3 max-w-5xl mx-auto" // Faculty centered with larger cards
+          : "grid-cols-2 md:grid-cols-4" // Students: Strict 2x grid on mobile
+        }`}>
         {members.map((member, i) => (
-          <TeamMemberCard
+          <HoloCard
             key={i}
-            name={member}
-            // If it's a Patron, use the section title as the role. Otherwise "Coordinator".
-            role={isLarge ? title : "Coordinator"}
-            // Pass size prop to adjust padding/text size inside the card
-            size={isLarge ? "large" : "normal"}
-            delay={i * 0.05}
+            member={member}
+            role={isFaculty ? title : "Coordinator"}
+            delay={i * 0.1}
+            isFaculty={isFaculty}
           />
         ))}
       </div>
@@ -105,37 +149,51 @@ const Section = ({ title, members }: { title: string, members: string[] }) => {
 
 const Team = () => {
   return (
-    <div className="min-h-screen bg-deep-navy pt-24 pb-20 px-4">
-      <motion.h1
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="text-4xl md:text-6xl font-display font-bold text-center text-white mb-4 tracking-tight"
+    <div className="min-h-screen pt-28 pb-20 px-4 md:px-8 font-sans overflow-x-hidden">
+
+      {/* PAGE HEADER */}
+      <motion.div
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="text-center mb-20 space-y-4"
       >
-        THE <span className="text-neon-cyan">TEAM</span>
-      </motion.h1>
-      <p className="text-center text-gray-400 mb-16 max-w-2xl mx-auto px-4 text-lg">Organizing Committee & Coordinators</p>
+        <h1 className="text-5xl md:text-7xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 tracking-tight">
+          THE TEAM
+        </h1>
+        <p className="text-neon-cyan font-mono text-sm tracking-[0.3em] uppercase">
+          Architects of Eclectique 2K26
+        </p>
+      </motion.div>
 
       {/* 1. FACULTY / PATRONS */}
-      <div className="max-w-6xl mx-auto mb-20">
+      <div className="max-w-7xl mx-auto mb-24">
         {FACULTY_SECTIONS.map((section, i) => (
-          <Section key={i} title={section.title} members={section.members} />
+          <Section key={i} title={section.title} members={section.members} isFaculty={true} />
         ))}
       </div>
 
       {/* 2. CORE TEAM */}
-      <div className="max-w-7xl mx-auto border-t border-white/10 pt-20">
-        <h2 className="text-3xl font-display font-bold text-center text-white mb-16 uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple opacity-80">Core Committee</h2>
+      <div className="max-w-7xl mx-auto relative">
+        {/* Divider */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-screen h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-12" />
+
+        <motion.h2
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="text-center text-3xl font-display font-bold text-white/90 mb-16 pt-12 uppercase tracking-[0.2em]"
+        >
+          Core Committee
+        </motion.h2>
+
         {STUDENT_SECTIONS.map((section, i) => (
           <Section key={i} title={section.title} members={section.members} />
         ))}
       </div>
 
-      {/* 3. EVENT COORDINATORS */}
-      <div className="max-w-7xl mx-auto border-t border-white/10 pt-20">
-        <h2 className="text-3xl font-display font-bold text-center text-white mb-16 uppercase tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan opacity-80">Event Coordinators</h2>
-        {EVENT_COORDINATORS.map((section, i) => (
-          <Section key={i} title={section.title} members={section.members} />
-        ))}
+      <div className="text-center mt-24">
+        <p className="text-white/30 font-mono text-xs tracking-widest uppercase">
+          ...and the dedicated efforts of our student volunteers.
+        </p>
       </div>
 
     </div>

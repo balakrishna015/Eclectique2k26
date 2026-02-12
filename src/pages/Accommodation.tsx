@@ -1,15 +1,16 @@
 import { motion } from "framer-motion";
+import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 const Accommodation = () => {
   const coordinators = [
-    { name: "H.Sandeep", role: "Accommodation Coordinator", phone: "+91 98765 43210" },
-    { name: "N.Mohith", role: "Accommodation Coordinator", phone: "+91 98765 43211" },
-    { name: "Ch.Jyothi", role: "Accommodation (Girls)", phone: "+91 98765 43212" },
-    { name: "K.Susmitha", role: "Accommodation (Girls)", phone: "+91 98765 43213" }
+    { name: "H. Sandeep", role: "Accommodation Coordinator", phone: "+91 77021 72646" },
+    { name: "Mohit", role: "Accommodation Coordinator", phone: "+91 90639 03443" },
+    { name: "Chinta Jyothi", role: "Accommodation (Girls)", phone: "+91 93814 56679" },
+    { name: "Kadha Susmitha", role: "Accommodation (Girls)", phone: "+91 91820 06336" }
   ];
 
   return (
-    <div className="min-h-screen bg-deep-navy pt-24 pb-20 px-6 font-sans">
+    <div className="min-h-screen pt-24 pb-20 px-6 font-sans">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -21,7 +22,7 @@ const Accommodation = () => {
 
         {/* Hero Image */}
         <div className="w-full h-64 md:h-96 bg-gray-800 rounded-2xl mb-12 overflow-hidden relative shadow-2xl border border-white/10">
-          <img
+          <ImageWithSkeleton
             src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069"
             alt="Hostel"
             className="w-full h-full object-cover"
