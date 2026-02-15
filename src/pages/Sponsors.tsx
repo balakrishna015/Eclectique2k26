@@ -42,7 +42,7 @@ const Sponsors = () => {
             <img
               src={sponsor.logo}
               alt={sponsor.name}
-              className="max-w-full max-h-full object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500 transform group-hover:scale-110 relative z-10"
+              className="max-w-full max-h-full object-contain filter grayscale brightness-0 invert group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0 transition-all duration-500 transform group-hover:scale-110 relative z-10"
             />
 
             <div className="absolute bottom-2 left-0 w-full text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">

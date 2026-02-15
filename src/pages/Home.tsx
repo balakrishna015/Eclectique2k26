@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import TextReveal from "../components/TextReveal";
 import EventModal, { type EventData } from "../components/EventModal";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
@@ -20,7 +20,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "Koppisetti Karthikeya", phone: "+91 86887 85636" },
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
-    regLink: "https://forms.google.com/ev-workshop"
+    regLink: "https://forms.gle/AgRYxchbP5Y6AA1z9"
   },
   {
     id: 2,
@@ -35,7 +35,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "S. B. Karthikeya Sarma", phone: "+91 94915 02203" },
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
-    regLink: "https://forms.google.com/tableau"
+    regLink: "https://forms.gle/wbWZJX9VEMktp1hy5"
   },
   // Events
   {
@@ -51,7 +51,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "B. Teja", phone: "+91 83742 30526" },
       { name: "I. Hariharan", phone: "+91 96767 59375" }
     ],
-    regLink: "https://forms.google.com/watt-vision"
+    regLink: "https://forms.gle/d2HWknhhBM9fuPvn8"
   },
   {
     id: 4,
@@ -66,7 +66,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "K. P. Chaitanya Varma", phone: "+91 93475 88627" },
       { name: "Sheik Aziz", phone: "+91 99083 44734" }
     ],
-    regLink: "https://forms.google.com/brain-wave"
+    regLink: "https://forms.gle/MRzLk7tL9FENZKcX6"
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "A. Manoj Kumar", phone: "+91 99630 13092" },
       { name: "T. Ramya", phone: "" }
     ],
-    regLink: "https://forms.google.com/puzzle-mania"
+    regLink: "https://forms.gle/uQe6hZi75j54Gwcf9"
   },
   {
     id: 6,
@@ -96,7 +96,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "V. K. Praneeth Naidu", phone: "+91 63051 81638" },
       { name: "D. Satya Durga", phone: "" }
     ],
-    regLink: "https://forms.google.com/mind-arena"
+    regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA"
   },
   {
     id: 7,
@@ -111,7 +111,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "Ch. Kuldeep", phone: "+91 63019 58061" },
       { name: "K. Sushmitha", phone: "" }
     ],
-    regLink: "https://forms.google.com/pixel-lens"
+    regLink: "https://forms.gle/UTZbdAiutHrHZRtP9"
   },
   {
     id: 8,
@@ -126,12 +126,21 @@ const EVENTS_DATA: EventData[] = [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" },
       { name: "Dupana Bhavya", phone: "" }
     ],
-    regLink: "https://forms.google.com/art-spark"
+    regLink: "https://forms.gle/GRD9pcYu5rts34PE7"
   }
 ];
 
 const Home = () => {
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  const handleRegister = (link: string) => {
+    setIsRedirecting(true);
+    setTimeout(() => {
+      window.open(link, "_blank");
+      setIsRedirecting(false);
+    }, 800);
+  };
 
   const workshops = EVENTS_DATA.filter(e => e.id <= 2);
   const events = EVENTS_DATA.filter(e => e.id > 2);
@@ -148,7 +157,7 @@ const Home = () => {
         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
       </div>
 
-      <div className="h-1/3 flex flex-col justify-center items-center relative p-4 bg-[#0a0a0f]">
+      <div className="h-1/3 flex flex-col justify-center items-center relative p-4 bg-white/5 backdrop-blur-md border-t border-white/10">
         <h3 className="text-xl font-display font-bold text-white mb-3 text-center tracking-wide group-hover:text-neon-cyan transition-colors">{item.title}</h3>
 
         <div className="flex gap-4">
@@ -158,14 +167,12 @@ const Home = () => {
           >
             Know More
           </button>
-          <a
-            href={item.regLink}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={() => handleRegister(item.regLink)}
             className="px-4 py-1.5 bg-neon-purple text-white text-xs font-bold tracking-wider rounded hover:bg-white hover:text-neon-purple transition-all uppercase"
           >
             Register
-          </a>
+          </button>
         </div>
       </div>
     </div>
@@ -175,9 +182,31 @@ const Home = () => {
     <div className="w-full min-h-screen bg-transparent overflow-y-auto overflow-x-hidden font-sans">
 
       {/* HERO SECTION */}
-      <div className="relative h-screen w-full flex items-center justify-center overflow-hidden text-white bg-gradient-to-b from-transparent via-[#0a0a0f]/50 to-[#0a0a0f]">
+      <div className="relative h-screen w-full flex items-center justify-center overflow-hidden text-white bg-transparent">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-deep-navy to-black opacity-80" />
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
+
+        {/* Redirect Overlay */}
+        <AnimatePresence>
+          {isRedirecting && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+            >
+              <div className="flex flex-col items-center gap-6">
+                <div className="relative w-16 h-16">
+                  <div className="absolute inset-0 rounded-full border-t-2 border-neon-cyan animate-spin"></div>
+                  <div className="absolute inset-2 rounded-full border-b-2 border-neon-purple animate-spin-slow"></div>
+                </div>
+                <p className="text-neon-cyan font-display tracking-widest text-lg animate-pulse">
+                  REDIRECTING TO SECURE REGISTRATION...
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Glow Orbs */}
         <motion.div

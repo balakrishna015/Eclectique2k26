@@ -34,18 +34,24 @@ const AnimatedRoutes = () => {
 
 import ParticlesBackground from "./components/ParticlesBackground";
 
+import GlobalErrorBoundary from "./components/GlobalErrorBoundary";
+
 function App() {
   return (
     <Router>
-      <ScrollToTop />
-      <ParticlesBackground />
-      <div className="relative z-10 bg-transparent min-h-screen text-white font-sans selection:bg-neon-cyan selection:text-deep-navy flex flex-col">
-        <Navbar />
-        <div className="flex-grow">
-          <AnimatedRoutes />
+      <GlobalErrorBoundary>
+        <ScrollToTop />
+        {/* Base Background */}
+        <div className="fixed inset-0 bg-[#0a0a0f] -z-10" />
+        <ParticlesBackground />
+        <div className="relative z-10 bg-transparent min-h-screen text-white font-sans selection:bg-neon-cyan selection:text-deep-navy flex flex-col">
+          <Navbar />
+          <div className="flex-grow">
+            <AnimatedRoutes />
+          </div>
+          <Footer />
         </div>
-        <Footer />
-      </div>
+      </GlobalErrorBoundary>
     </Router>
   );
 }

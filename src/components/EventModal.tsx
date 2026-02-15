@@ -29,12 +29,43 @@ interface EventModalProps {
 
 const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
   const [activeTab, setActiveTab] = useState<"about" | "rules" | "coords">("about");
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  const handleRegister = (link: string) => {
+    setIsRedirecting(true);
+    setTimeout(() => {
+      window.open(link, "_blank");
+      setIsRedirecting(false);
+    }, 800);
+  };
 
   if (!isOpen || !data) return null;
 
   return (
     <AnimatePresence>
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        {/* Redirect Overlay */}
+        <AnimatePresence>
+          {isRedirecting && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[110] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+            >
+              <div className="flex flex-col items-center gap-6">
+                <div className="relative w-16 h-16">
+                  <div className="absolute inset-0 rounded-full border-t-2 border-neon-cyan animate-spin"></div>
+                  <div className="absolute inset-2 rounded-full border-b-2 border-neon-purple animate-spin-slow"></div>
+                </div>
+                <p className="text-neon-cyan font-display tracking-widest text-lg animate-pulse">
+                  REDIRECTING TO SECURE REGISTRATION...
+                </p>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Backdrop */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -69,14 +100,12 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
               <div>
                 <h2 className="text-3xl md:text-5xl font-display font-bold text-white tracking-tight drop-shadow-lg">{data.title}</h2>
               </div>
-              <a
-                href={data.regLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => handleRegister(data.regLink)}
                 className="bg-neon-cyan/90 hover:bg-neon-cyan text-deep-navy px-6 py-2 rounded font-bold tracking-wider transition-all flex items-center gap-2 shadow-[0_0_15px_rgba(0,243,255,0.4)] hover:shadow-[0_0_25px_rgba(0,243,255,0.6)]"
               >
                 REGISTER NOW <ExternalLink size={16} />
-              </a>
+              </button>
             </div>
           </div>
 

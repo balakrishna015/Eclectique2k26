@@ -24,7 +24,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="w-full bg-[#05050a] border-t border-neon-cyan/20 pt-16 pb-8 px-6 mt-auto relative overflow-hidden">
+    <footer className="w-full bg-[#05050a]/80 backdrop-blur-md border-t border-neon-cyan/30 shadow-[0_-5px_20px_rgba(0,243,255,0.1)] pt-16 pb-8 px-6 mt-auto relative overflow-hidden">
       {/* Glow Effect */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-3xl h-1 bg-gradient-to-r from-transparent via-neon-cyan/50 to-transparent blur-sm" />
 
@@ -57,6 +57,12 @@ const Footer = () => {
               </Link>
             ))}
           </div>
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="text-xs text-gray-500 hover:text-white uppercase tracking-widest transition-colors mt-4 border border-white/10 px-4 py-2 rounded-full hover:border-neon-cyan/50 hover:bg-neon-cyan/5"
+          >
+            Back to Top ↑
+          </button>
         </div>
 
         {/* Connect Column */}

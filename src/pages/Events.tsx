@@ -1,5 +1,5 @@
-import { useRef, useEffect } from "react";
-import { motion } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { IndianRupee, Users, Clock, ExternalLink } from "lucide-react";
@@ -22,7 +22,7 @@ const EVENTS = [
       { name: "Koppisetti Karthikeya", phone: "+91 86887 85636" },
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
-    regLink: "https://forms.google.com/ev-workshop"
+    regLink: "https://forms.gle/AgRYxchbP5Y6AA1z9"
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const EVENTS = [
       { name: "S. B. Karthikeya Sarma", phone: "+91 94915 02203" },
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
-    regLink: "https://forms.google.com/tableau"
+    regLink: "https://forms.gle/wbWZJX9VEMktp1hy5"
   },
   {
     id: 3,
@@ -52,7 +52,7 @@ const EVENTS = [
       { name: "B. Teja", phone: "+91 83742 30526" },
       { name: "I. Hariharan", phone: "+91 96767 59375" }
     ],
-    regLink: "https://forms.google.com/watt-vision"
+    regLink: "https://forms.gle/d2HWknhhBM9fuPvn8"
   },
   {
     id: 4,
@@ -67,7 +67,7 @@ const EVENTS = [
       { name: "K. P. Chaitanya Varma", phone: "+91 93475 88627" },
       { name: "Sheik Aziz", phone: "+91 99083 44734" }
     ],
-    regLink: "https://forms.google.com/brain-wave"
+    regLink: "https://forms.gle/MRzLk7tL9FENZKcX6"
   },
   {
     id: 5,
@@ -82,7 +82,7 @@ const EVENTS = [
       { name: "A. Manoj Kumar", phone: "+91 99630 13092" },
       { name: "T. Ramya", phone: "" } // Add phone if available
     ],
-    regLink: "https://forms.google.com/puzzle-mania"
+    regLink: "https://forms.gle/uQe6hZi75j54Gwcf9"
   },
   {
     id: 6,
@@ -97,7 +97,7 @@ const EVENTS = [
       { name: "V. K. Praneeth Naidu", phone: "+91 63051 81638" },
       { name: "D. Satya Durga", phone: "" }
     ],
-    regLink: "https://forms.google.com/mind-arena"
+    regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA"
   },
   {
     id: 7,
@@ -112,7 +112,7 @@ const EVENTS = [
       { name: "Ch. Kuldeep", phone: "+91 63019 58061" },
       { name: "K. Sushmitha", phone: "" }
     ],
-    regLink: "https://forms.google.com/pixel-lens"
+    regLink: "https://forms.gle/UTZbdAiutHrHZRtP9"
   },
   {
     id: 8,
@@ -126,16 +126,25 @@ const EVENTS = [
     coordinators: [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "" }
     ],
-    regLink: "https://forms.google.com/art-spark"
+    regLink: "https://forms.gle/GRD9pcYu5rts34PE7"
   }
 ];
 
 export default function Events() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
+  const [isRedirecting, setIsRedirecting] = useState(false);
+
+  const handleRegister = (link: string) => {
+    setIsRedirecting(true);
+    setTimeout(() => {
+      window.open(link, "_blank");
+      setIsRedirecting(false);
+    }, 800);
+  };
 
   useEffect(() => {
-    let ctx = gsap.context(() => {
+    const ctx = gsap.context(() => {
       if (window.innerWidth >= 768) {
         gsap.fromTo(
           sectionRef.current,
@@ -164,6 +173,28 @@ export default function Events() {
   return (
     <div className="min-h-screen bg-transparent">
 
+      {/* Redirect Overlay */}
+      <AnimatePresence>
+        {isRedirecting && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
+          >
+            <div className="flex flex-col items-center gap-6">
+              <div className="relative w-16 h-16">
+                <div className="absolute inset-0 rounded-full border-t-2 border-neon-cyan animate-spin"></div>
+                <div className="absolute inset-2 rounded-full border-b-2 border-neon-purple animate-spin-slow"></div>
+              </div>
+              <p className="text-neon-cyan font-display tracking-widest text-lg animate-pulse">
+                REDIRECTING TO SECURE REGISTRATION...
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Intro Section (Stick to Top) */}
       <div className="h-screen w-full flex items-center justify-center relative z-10 border-b border-white/10">
         <div className="text-center px-4">
@@ -191,11 +222,11 @@ export default function Events() {
               className="w-screen h-screen flex flex-row items-center justify-center p-20 border-r border-white/5 relative"
             >
               {/* Background Glow */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-deep-navy/90 z-0" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent z-0" />
 
               {/* Event Image Card (Left) */}
-              <div className="w-1/2 h-[70vh] relative z-10 group overflow-hidden rounded-2xl border border-white/10 glass transition-all duration-500 hover:border-neon-cyan/50">
-                <div className="absolute inset-0 bg-deep-navy/40 group-hover:bg-transparent transition-colors duration-500 z-10" />
+              <div className="w-1/2 h-[70vh] relative z-10 group overflow-hidden rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md transition-all duration-500 hover:border-neon-cyan/50">
+                <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
                 <ImageWithSkeleton
                   src={event.image}
                   alt={event.title}
@@ -251,14 +282,12 @@ export default function Events() {
                   </div>
                 </div>
 
-                <a
-                  href={event.regLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  onClick={() => handleRegister(event.regLink)}
                   className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-bold tracking-widest hover:bg-neon-cyan hover:text-deep-navy transition-all duration-300 rounded-sm flex items-center gap-2"
                 >
                   REGISTER <ExternalLink size={16} />
-                </a>
+                </button>
               </div>
             </div>
           ))}
@@ -274,7 +303,7 @@ export default function Events() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-50px" }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="w-full flex flex-col gap-4 rounded-xl overflow-hidden glass border border-white/10 pb-6"
+            className="w-full flex flex-col gap-4 rounded-xl overflow-hidden bg-white/5 backdrop-blur-md border border-white/10 pb-6"
           >
             {/* Mobile Image */}
             <div className="w-full aspect-[3/2] relative overflow-hidden">
@@ -313,14 +342,12 @@ export default function Events() {
                 </div>
               </div>
 
-              <a
-                href={event.regLink}
-                target="_blank"
-                rel="noopener noreferrer"
+              <button
+                onClick={() => handleRegister(event.regLink)}
                 className="w-full py-3 bg-neon-cyan text-deep-navy font-bold text-center tracking-widest uppercase rounded-sm hover:bg-white transition-colors"
               >
                 Register
-              </a>
+              </button>
             </div>
           </motion.div>
         ))}

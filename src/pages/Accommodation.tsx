@@ -49,7 +49,7 @@ const Accommodation = () => {
             </div>
           </div>
 
-          <div className="glass p-8 rounded-xl border border-neon-cyan/30 relative overflow-hidden group">
+          <div className="bg-white/5 backdrop-blur-md p-8 rounded-xl border border-neon-cyan/30 relative overflow-hidden group">
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <svg width="100" height="100" viewBox="0 0 24 24" fill="white"><path d="M2 22v-8h20v8H2zm2-2h16v-4H4v4zm6-12h4v2h-4V8zm0 4h4v2h-4v-2zm-6-8h16v2H4V4z" /></svg>
             </div>
