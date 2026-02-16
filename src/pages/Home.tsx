@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import TextReveal from "../components/TextReveal";
-import EventModal, { type EventData } from "../components/EventModal";
+import EventModal from "../components/EventModal";
+import type { EventData } from "../types";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 // --- FULL DATASET ---
@@ -10,6 +11,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 1,
     title: "EV TECHNOLOGY",
+    category: "Workshop",
     image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072",
     fee: "₹ 999/-",
     teamSize: "Individual",
@@ -25,6 +27,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 2,
     title: "TABLEAU",
+    category: "Workshop",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
     fee: "₹ 499/-",
     teamSize: "Individual",
@@ -41,6 +44,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 3,
     title: "WATT VISION",
+    category: "Project Expo",
     image: "https://static.vecteezy.com/system/resources/thumbnails/070/375/490/small/precision-soldering-on-green-circuit-board-close-up-electronic-repair-technology-free-photo.jpg",
     fee: "₹ 150 (1) | ₹ 250 (2) | ₹ 350 (3-4)",
     teamSize: "Max 4 Members",
@@ -56,6 +60,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 4,
     title: "BRAIN WAVE",
+    category: "Quiz",
     image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=2070",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -71,6 +76,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 5,
     title: "PUZZLE MANIA",
+    category: "Treasure Hunt",
     image: "https://images.stockcake.com/public/7/5/e/75e504f6-f315-43cd-a410-290bf0dfbc79_large/innovative-lightbulb-puzzle-stockcake.jpg",
     fee: "₹ 50 (Solo) | ₹ 200 (Group of 4)",
     teamSize: "1 or 4",
@@ -86,6 +92,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 6,
     title: "MIND ARENA",
+    category: "Tech Challenge",
     image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -101,6 +108,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 7,
     title: "PIXEL LENS",
+    category: "Photography",
     image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -116,6 +124,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 8,
     title: "ART SPARK",
+    category: "Creative Arts",
     image: "https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?_gl=1*1kj32c7*_ga*Mjk3MDc5NDAzLjE3NzExNzk1MTI.*_ga_8JE65Q40S6*czE3NzExNzk1MTIkbzEkZzEkdDE3NzExNzk1MjgkajQ0JGwwJGgw",
     fee: "₹ 50/-",
     teamSize: "Individual",

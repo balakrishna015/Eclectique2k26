@@ -2,26 +2,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, Users, IndianRupee, Phone, ExternalLink } from "lucide-react";
 import { useState } from "react";
 
-// Define Types Locally to avoid import errors
-export interface Coordinator {
-  name: string;
-  phone: string;
-}
+import type { EventData } from "../types";
 
-export interface EventData {
-  id: number;
-  title: string;
-  image: string;
-  fee: string;
-  teamSize: string;
-  time: string;
-  description: string;
-  rules: string[];
-  coordinators: Coordinator[];
-  regLink: string;
-}
-
-interface EventModalProps {
+export interface EventModalProps {
   isOpen: boolean;
   onClose: () => void;
   data: EventData | null;

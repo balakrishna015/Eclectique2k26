@@ -72,7 +72,7 @@ const STUDENT_SECTIONS: SectionData[] = [
     members: [
       { name: "B. Srikanth", role: "Treasurer" },
       { name: "V. Hemanth Kumar", role: "Treasurer" },
-      //{ name: "S. Manasa", role: "Treasurer" },
+      { name: "S. Manasa", role: "Treasurer" },
     ]
   },
   {
@@ -80,7 +80,7 @@ const STUDENT_SECTIONS: SectionData[] = [
     members: [
       { name: "Y. Balakrishna", role: "Technical Co-Ordinator" },
       { name: "Md. Habibuddin", role: "Technical Co-Ordinator", image: HabibuddhinImg },
-      //{ name: "A. Hema", role: "Tech Lead" },
+      { name: "A. Hema", role: "Tech Lead" },
     ]
   },
 ];

@@ -7,8 +7,10 @@ import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import type { EventData } from "../types";
+
 // --- DATA ---
-const EVENTS = [
+const EVENTS: EventData[] = [
   {
     id: 1,
     title: "EV TECHNOLOGY",
@@ -23,7 +25,8 @@ const EVENTS = [
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
     regLink: "https://forms.gle/AgRYxchbP5Y6AA1z9",
-    brochureLink: "/brochures/ev-workshop.pdf"
+    brochureLink: "/brochures/ev-workshop.pdf",
+    rules: []
   },
   {
     id: 2,
@@ -39,7 +42,8 @@ const EVENTS = [
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
     regLink: "https://forms.gle/wbWZJX9VEMktp1hy5",
-    brochureLink: "/brochures/tableau-workshop.pdf"
+    brochureLink: "/brochures/tableau-workshop.pdf",
+    rules: []
   },
   {
     id: 3,
@@ -55,7 +59,8 @@ const EVENTS = [
       { name: "I. Hariharan", phone: "+91 96767 59375" }
     ],
     regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
-    brochureLink: "/brochures/watt-vision.pdf"
+    brochureLink: "/brochures/watt-vision.pdf",
+    rules: []
   },
   {
     id: 4,
@@ -71,7 +76,8 @@ const EVENTS = [
       { name: "Sheik Aziz", phone: "+91 99083 44734" }
     ],
     regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
-    brochureLink: "/brochures/brain-wave.pdf"
+    brochureLink: "/brochures/brain-wave.pdf",
+    rules: []
   },
   {
     id: 5,
@@ -87,7 +93,8 @@ const EVENTS = [
       { name: "T. Ramya", phone: "" } // Add phone if available
     ],
     regLink: "https://forms.gle/uQe6hZi75j54Gwcf9",
-    brochureLink: "/brochures/puzzle-mania.pdf"
+    brochureLink: "/brochures/puzzle-mania.pdf",
+    rules: []
   },
   {
     id: 6,
@@ -103,7 +110,8 @@ const EVENTS = [
       { name: "D. Satya Durga", phone: "" }
     ],
     regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA",
-    brochureLink: "/brochures/mind-arena.pdf"
+    brochureLink: "/brochures/mind-arena.pdf",
+    rules: []
   },
   {
     id: 7,
@@ -119,7 +127,8 @@ const EVENTS = [
       { name: "K. Sushmitha", phone: "" }
     ],
     regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
-    brochureLink: "/brochures/pixel-lens.pdf"
+    brochureLink: "/brochures/pixel-lens.pdf",
+    rules: []
   },
   {
     id: 8,
@@ -134,7 +143,8 @@ const EVENTS = [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "" }
     ],
     regLink: "https://forms.gle/GRD9pcYu5rts34PE7",
-    brochureLink: "/brochures/art-spark.pdf"
+    brochureLink: "/brochures/art-spark.pdf",
+    rules: []
   }
 ];
 
