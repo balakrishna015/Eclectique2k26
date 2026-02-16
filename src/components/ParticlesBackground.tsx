@@ -1,14 +1,19 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
-import Particles from "react-tsparticles";
-import { loadSlim } from "tsparticles-slim";
-import type { Engine } from "tsparticles-engine";
+import { useEffect, useMemo, useState } from "react";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { type ISourceOptions } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 
 const ParticlesBackground = () => {
-  const particlesInit = useCallback(async (engine: Engine) => {
-    await loadSlim(engine);
-  }, []);
-
+  const [init, setInit] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+  }, []);
 
   useEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
@@ -17,7 +22,7 @@ const ParticlesBackground = () => {
     return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
-  const options = useMemo(() => {
+  const options: ISourceOptions = useMemo(() => {
     return {
       autoPlay: true,
       background: { color: { value: "transparent" } },
@@ -29,7 +34,8 @@ const ParticlesBackground = () => {
           value: isMobile ? 10 : 20, // Minimal count
           density: {
             enable: true,
-            area: 800,
+            width: 800,
+            height: 800,
           },
         },
         color: {
@@ -44,7 +50,7 @@ const ParticlesBackground = () => {
           anim: {
             enable: true,
             speed: 0.5,
-            opacity_min: 0.1,
+            opacity: { min: 0.1, max: 0.5 },
             sync: false,
           },
         },
@@ -62,23 +68,26 @@ const ParticlesBackground = () => {
         move: {
           enable: true,
           speed: 0.5, // Slow drift
-          direction: "none" as const,
+          direction: "none",
           random: false,
           straight: false,
-          outModes: "out" as const,
+          outModes: "out",
           attract: {
             enable: false,
           },
         },
       },
       interactivity: {
-        detectsOn: "window" as const,
+        detectsOn: "window",
         events: {
           onHover: {
             enable: true,
             mode: "grab", // Subtle interaction
           },
-          resize: true,
+          resize: {
+            enable: true,
+            delay: 0.5
+          },
         },
         modes: {
           grab: {
@@ -92,11 +101,12 @@ const ParticlesBackground = () => {
     };
   }, [isMobile]);
 
+  if (!init) return null;
+
   return (
     <div className="fixed inset-0 z-0 pointer-events-none">
       <Particles
         id="tsparticles"
-        init={particlesInit}
         options={options}
         className="w-full h-full"
       />
