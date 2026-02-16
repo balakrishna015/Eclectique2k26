@@ -6,9 +6,10 @@ interface ImageWithSkeletonProps extends React.ImgHTMLAttributes<HTMLImageElemen
   src: string;
   alt: string;
   className?: string;
+  priority?: boolean;
 }
 
-const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({ src, alt, className = "", ...props }) => {
+const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({ src, alt, className = "", priority = false, ...props }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   return (
@@ -30,6 +31,8 @@ const ImageWithSkeleton: React.FC<ImageWithSkeletonProps> = ({ src, alt, classNa
         alt={alt}
         className={`block w-full h-full object-cover transition-opacity duration-500 ${isLoaded ? 'opacity-100' : 'opacity-0'}`}
         onLoad={() => setIsLoaded(true)}
+        loading={priority ? "eager" : "lazy"}
+        fetchPriority={priority ? "high" : "auto"}
         {...props}
       />
     </div>

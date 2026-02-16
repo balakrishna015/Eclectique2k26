@@ -41,7 +41,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 3,
     title: "WATT VISION",
-    image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069",
+    image: "https://static.vecteezy.com/system/resources/thumbnails/070/375/490/small/precision-soldering-on-green-circuit-board-close-up-electronic-repair-technology-free-photo.jpg",
     fee: "₹ 150 (1) | ₹ 250 (2) | ₹ 350 (3-4)",
     teamSize: "Max 4 Members",
     time: "Mar 5, 10:00 AM",
@@ -71,7 +71,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 5,
     title: "PUZZLE MANIA",
-    image: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2078",
+    image: "https://images.stockcake.com/public/7/5/e/75e504f6-f315-43cd-a410-290bf0dfbc79_large/innovative-lightbulb-puzzle-stockcake.jpg",
     fee: "₹ 50 (Solo) | ₹ 200 (Group of 4)",
     teamSize: "1 or 4",
     time: "Mar 5, 2:00 PM",
@@ -116,7 +116,7 @@ const EVENTS_DATA: EventData[] = [
   {
     id: 8,
     title: "ART SPARK",
-    image: "https://images.unsplash.com/photo-1460661631630-8947b5d36e0d?q=80&w=2070",
+    image: "https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?_gl=1*1kj32c7*_ga*Mjk3MDc5NDAzLjE3NzExNzk1MTI.*_ga_8JE65Q40S6*czE3NzExNzk1MTIkbzEkZzEkdDE3NzExNzk1MjgkajQ0JGwwJGgw",
     fee: "₹ 50/-",
     teamSize: "Individual",
     time: "Mar 5, 1:00 PM",

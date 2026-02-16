@@ -4,16 +4,14 @@ import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 // --- DATA ---
 const GALLERY_IMAGES = [
-  { id: 1, src: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=2070", alt: "TECH SIGNATURE", desc: "Digital Frontier", date: "2026.01.12" },
-  { id: 2, src: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070", alt: "CYBER CITY", desc: "Urban Evolution", date: "2026.02.04" },
-  { id: 3, src: "https://images.unsplash.com/photo-1535378437327-66486bd8c445?q=80&w=1920", alt: "NEON DREAM", desc: "Light Synthesis", date: "2026.02.10" },
-  { id: 4, src: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=1974", alt: "AI LOGIC", desc: "Neural Networks", date: "2026.02.15" },
-  { id: 5, src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1964", alt: "FLUID DATA", desc: "Stream Process", date: "2026.03.01" },
-  { id: 6, src: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070", alt: "MATRIX RAIN", desc: "Code Cascade", date: "2026.03.12" },
-  { id: 7, src: "https://images.unsplash.com/photo-1534224039826-c7a0eda0e6b3?q=80&w=2070", alt: "PRISM CORE", desc: "Optical refraction", date: "2026.03.20" },
-  { id: 8, src: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?q=80&w=2070", alt: "RETRO WAVES", desc: "Analog Signal", date: "2026.04.05" },
-  { id: 9, src: "https://images.unsplash.com/photo-1504384308090-c54be3852f33?q=80&w=1887", alt: "DATA TUNNEL", desc: "High Velocity", date: "2026.04.18" },
-  { id: 10, src: "https://images.unsplash.com/photo-1563089145-599997674d42?q=80&w=2070", alt: "GRID SYSTEM", desc: "Structure", date: "2026.05.01" },
+  { id: 1, src: "/gallery/clique.webp", alt: "CLIQUE", desc: "Community & Bonding", date: "2026.03.05" },
+  { id: 2, src: "/gallery/culturalclub.webp", alt: "CULTURAL CLUB", desc: "Artistic Expression", date: "2026.03.05" },
+  { id: 3, src: "/gallery/mindstorming.webp", alt: "MIND STORMING", desc: "Innovation Hub", date: "2026.03.05" },
+  { id: 4, src: "/gallery/tarang.webp", alt: "TARANG", desc: "Waves of Talent", date: "2026.03.06" },
+  { id: 5, src: "/gallery/dandiya.webp", alt: "DANDIYA", desc: "Traditional Beats", date: "2026.03.06" },
+  { id: 6, src: "/gallery/culturals.webp", alt: "CULTURALS", desc: "Stage Performance", date: "2026.03.06" },
+  { id: 7, src: "/gallery/ekthara.webp", alt: "EKTHARA", desc: "Musical Night", date: "2026.03.06" },
+  { id: 8, src: "/gallery/flashmob.webp", alt: "FLASHMOB", desc: "Street Energy", date: "2026.03.05" },
 ];
 
 const MobileGalleryItem = ({ item }: { item: typeof GALLERY_IMAGES[0] }) => {
@@ -74,16 +72,26 @@ const Gallery = () => {
     <div className="min-h-screen w-full pt-28 pb-20 px-0 md:px-8 flex flex-col relative z-10">
 
       {/* HEADER */}
+      {/* HEADER - THE VISUAL ARCHIVE */}
       <motion.div
-        initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-center mb-8 flex-none px-4"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="text-center mb-16 flex-none px-4"
       >
-        <h1 className="text-5xl md:text-7xl font-display font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-neon-cyan to-white tracking-tight">
-          GALLERY
+        <h1 className="text-5xl md:text-7xl font-bold tracking-tighter uppercase font-display mb-2 text-white">
+          THE VISUAL ARCHIVE
         </h1>
-        <p className="text-neon-cyan/80 font-mono text-sm tracking-[0.3em] uppercase mt-2">
-          [ DECLASSIFIED VISUALS ]
+        <p className="text-neon-cyan/80 text-sm md:text-base tracking-[0.4em] uppercase mb-6 font-mono">
+          Capturing the Electron Flow of Innovation
+        </p>
+
+        {/* Visual Anchor */}
+        <div className="h-[1px] w-[20%] bg-neon-cyan/50 mx-auto" />
+
+        {/* Narrative Body */}
+        <p className="max-w-2xl mx-auto text-gray-400 font-light leading-relaxed tracking-wide mt-8 px-4 text-justify md:text-center">
+          Beyond the circuits and the code lies the raw energy of Eclectique. This gallery is a curated timeline of moments where logic met creativity. From the high-voltage energy of <strong className="text-neon-cyan font-normal">Flashmobs</strong> to the rhythmic precision of <strong className="text-neon-purple font-normal">Tarang</strong>, witness the spectrum of a national symposium in motion. Every frame here is a testament to the spirit of JNTUGV—where tradition is the foundation, and technology is the frontier.
         </p>
       </motion.div>
 

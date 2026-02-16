@@ -12,7 +12,7 @@ const Navbar = () => {
     { name: "Events", path: "/events" },
     { name: "Team", path: "/team" },
     { name: "Stay", path: "/stay" }, // Added Stay Link
-    { name: "Sponsors", path: "/sponsors" },
+    // { name: "Sponsors", path: "/sponsors" },
     { name: "Gallery", path: "/gallery" },
     { name: "Brochure", path: "/brochure" },
   ];

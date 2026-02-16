@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
+import Skeleton from "../components/ui/Skeleton";
 
 // --- FACULTY IMAGES ---
 import chiefPatronImg from '../assets/chief patron.webp';
@@ -11,9 +13,10 @@ import convenorImg from '../assets/Convenor.webp';
 // Convenor image missing, will use fallback
 import coordinatorImg from '../assets/Dr.A.Padmaja.webp';
 import MaincoordinatorImg from '../assets/Cherrynischal.webp';
-import FemalecoordinatorImg from '../assets/Femalecoordinator.jpg.webp';
-import ManojramImg from '../assets/Hannahgrace.webp';
-import HannahgraceImg from '../assets/Hannahgrace.webp';
+import FemalecoordinatorImg from '../assets/Gowthami.webp';
+import ManojramImg from '../assets/Manojram.webp';
+import HannahgraceImg from '../assets/Hannahgrace.png';
+import HabibuddhinImg from '../assets/Habibuddhin.webp';
 
 
 // --- DATA ---
@@ -53,7 +56,7 @@ const STUDENT_SECTIONS: SectionData[] = [
   {
     title: "Main Coordinators",
     members: [
-      { name: "Yalangi Chery Nischal", role: "Coordinator", image: MaincoordinatorImg },
+      { name: "Y. Chery Nischal", role: "Coordinator", image: MaincoordinatorImg },
       { name: "G. Gowthami", role: "Coordinator", image: FemalecoordinatorImg },
     ]
   },
@@ -68,16 +71,16 @@ const STUDENT_SECTIONS: SectionData[] = [
     title: "Treasurers",
     members: [
       { name: "B. Srikanth", role: "Treasurer" },
-      { name: "Vantaku Hemanth Kumar", role: "Treasurer" },
-      { name: "S. Manasa", role: "Treasurer" },
+      { name: "V. Hemanth Kumar", role: "Treasurer" },
+      //{ name: "S. Manasa", role: "Treasurer" },
     ]
   },
   {
     title: "Technical Coordinators",
     members: [
-      { name: "Yarapathni Balakrishna", role: "Tech Lead" },
-      { name: "Mohammad Habibuddin", role: "Tech Lead" },
-      { name: "A. Hema", role: "Tech Lead" },
+      { name: "Y. Balakrishna", role: "Technical Co-Ordinator" },
+      { name: "Md. Habibuddin", role: "Technical Co-Ordinator", image: HabibuddhinImg },
+      //{ name: "A. Hema", role: "Tech Lead" },
     ]
   },
 ];
@@ -86,10 +89,10 @@ const STUDENT_SECTIONS: SectionData[] = [
 const CircularCard = ({ member, index }: { member: TeamMember, index: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
       className="flex flex-col items-center justify-center p-4"
     >
       {/* CIRCLE CONTAINER */}
@@ -98,13 +101,15 @@ const CircularCard = ({ member, index }: { member: TeamMember, index: number }) 
           <ImageWithSkeleton
             src={member.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=111&color=00f3ff&font-size=0.4`}
             alt={member.name}
-            className="w-full h-full object-cover object-center grayscale-0"
+            className="w-full h-full object-cover object-center grayscale-0 select-none pointer-events-none"
+            onContextMenu={(e: React.MouseEvent) => e.preventDefault()}
+            draggable="false"
           />
         </div>
       </div>
 
       {/* TEXT MATCHING REFERENCE */}
-      <div className="text-center mt-4">
+      <div className="text-center mt-4 relative z-10">
         {/* Name in CYAN */}
         <h3 className="text-neon-cyan font-bold text-xl md:text-2xl tracking-wide uppercase font-sans mb-1 break-words max-w-[140px] md:max-w-none">
           {member.name}
@@ -142,34 +147,109 @@ const Section = ({ title, members }: { title: string, members: TeamMember[] }) =
   );
 };
 
+const TeamSkeleton = () => (
+  <div className="flex flex-col items-center w-full animate-pulse">
+    {/* Fake Header */}
+    <div className="w-1/2 h-16 bg-white/5 rounded-lg mb-20" />
+
+    {/* Fake Section 1 */}
+    <div className="w-full max-w-5xl flex flex-col items-center mb-20">
+      <div className="w-32 h-6 bg-white/5 rounded mb-12" />
+      <div className="flex justify-center gap-20">
+        <div className="flex flex-col items-center">
+          <Skeleton className="w-48 h-48 md:w-56 md:h-56 rounded-full mb-6" />
+          <Skeleton className="w-32 h-6 rounded mb-2" />
+        </div>
+      </div>
+    </div>
+
+    {/* Fake Section 2 */}
+    <div className="w-full max-w-5xl flex flex-col items-center">
+      <div className="w-32 h-6 bg-white/5 rounded mb-12" />
+      <div className="flex justify-center gap-20">
+        <div className="flex flex-col items-center">
+          <Skeleton className="w-48 h-48 md:w-56 md:h-56 rounded-full mb-6" />
+          <Skeleton className="w-32 h-6 rounded mb-2" />
+        </div>
+        <div className="flex flex-col items-center hidden md:flex">
+          <Skeleton className="w-56 h-56 rounded-full mb-6" />
+          <Skeleton className="w-32 h-6 rounded mb-2" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+);
+
 const Team = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate smart load (or wait for real assets if we had a preloader)
+    // For now, just a quick timeout to show the "Blueprint" effect
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 800);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="min-h-screen pt-32 pb-40 px-4 bg-black font-sans relative overflow-x-hidden">
 
-      {/* HEADER MATCH */}
-      <div className="text-center mb-20">
-        <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-2">
-          <span className="text-white">THE</span> <span className="text-neon-cyan">TEAM</span>
-        </h1>
-        <p className="text-gray-400 text-lg md:text-xl font-light">
-          Organizing Committee & Coordinators
-        </p>
-      </div>
+      {isLoading ? (
+        <TeamSkeleton />
+      ) : (
+        <>
+          {/* ATMOSPHERIC BACKGROUND LAYERS */}
+          <div className="fixed inset-0 pointer-events-none z-0">
+            <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03]"></div>
 
-      <div className="flex flex-col items-center w-full">
-        {/* Faculty */}
-        {FACULTY_SECTIONS.map((section, i) => (
-          <Section key={i} title={section.title} members={section.members} />
-        ))}
+            {/* ORB 1 - Top Left */}
+            <motion.div
+              animate={{
+                x: [0, 40, 0],
+                y: [0, 20, 0]
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-cyan-500/10 blur-[120px] rounded-full -z-10"
+            />
 
-        {/* Divider (Optional, if implied by spacing) */}
-        <div className="h-20" />
+            {/* ORB 2 - Bottom Right */}
+            <motion.div
+              animate={{
+                x: [0, 40, 0],
+                y: [0, 20, 0]
+              }}
+              transition={{ duration: 20, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+              className="absolute bottom-[10%] right-[-10%] w-[500px] h-[500px] bg-purple-600/10 blur-[150px] rounded-full -z-10"
+            />
+          </div>
+          {/* MATCHINGHEADER */}
+          <div className="text-center mb-20">
+            <h1 className="text-5xl md:text-6xl font-bold tracking-tight mb-2">
+              <span className="text-white">THE</span> <span className="text-neon-cyan">TEAM</span>
+            </h1>
+            <p className="text-gray-400 text-lg md:text-xl font-light">
+              Organizing Committee & Coordinators
+            </p>
+          </div>
 
-        {/* Students */}
-        {STUDENT_SECTIONS.map((section, i) => (
-          <Section key={i} title={section.title} members={section.members} />
-        ))}
-      </div>
+          <div className="flex flex-col items-center w-full">
+            {/* Faculty */}
+            {FACULTY_SECTIONS.map((section, i) => (
+              <Section key={i} title={section.title} members={section.members} />
+            ))}
+
+            {/* Divider (Optional, if implied by spacing) */}
+            <div className="h-20" />
+
+            {/* Students */}
+            {STUDENT_SECTIONS.map((section, i) => (
+              <Section key={i} title={section.title} members={section.members} />
+            ))}
+          </div>
+        </>
+      )}
 
     </div>
   );

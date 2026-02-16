@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { IndianRupee, Users, Clock, ExternalLink } from "lucide-react";
+import { IndianRupee, Users, Clock, ExternalLink, FileText } from "lucide-react";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -22,7 +22,8 @@ const EVENTS = [
       { name: "Koppisetti Karthikeya", phone: "+91 86887 85636" },
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
-    regLink: "https://forms.gle/AgRYxchbP5Y6AA1z9"
+    regLink: "https://forms.gle/AgRYxchbP5Y6AA1z9",
+    brochureLink: "/brochures/ev-workshop.pdf"
   },
   {
     id: 2,
@@ -37,13 +38,14 @@ const EVENTS = [
       { name: "S. B. Karthikeya Sarma", phone: "+91 94915 02203" },
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
-    regLink: "https://forms.gle/wbWZJX9VEMktp1hy5"
+    regLink: "https://forms.gle/wbWZJX9VEMktp1hy5",
+    brochureLink: "/brochures/tableau-workshop.pdf"
   },
   {
     id: 3,
     title: "WATT VISION",
     category: "Project Expo",
-    image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?q=80&w=2069",
+    image: "https://static.vecteezy.com/system/resources/thumbnails/070/375/490/small/precision-soldering-on-green-circuit-board-close-up-electronic-repair-technology-free-photo.jpg",
     description: "Showcase your innovative projects and ideas to a panel of experts. A platform to display your technical prowess.",
     fee: "₹ 150 (1) | ₹ 250 (2) | ₹ 350 (3-4)",
     teamSize: "Max 4",
@@ -52,7 +54,8 @@ const EVENTS = [
       { name: "B. Teja", phone: "+91 83742 30526" },
       { name: "I. Hariharan", phone: "+91 96767 59375" }
     ],
-    regLink: "https://forms.gle/d2HWknhhBM9fuPvn8"
+    regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
+    brochureLink: "/brochures/watt-vision.pdf"
   },
   {
     id: 4,
@@ -67,13 +70,14 @@ const EVENTS = [
       { name: "K. P. Chaitanya Varma", phone: "+91 93475 88627" },
       { name: "Sheik Aziz", phone: "+91 99083 44734" }
     ],
-    regLink: "https://forms.gle/MRzLk7tL9FENZKcX6"
+    regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
+    brochureLink: "/brochures/brain-wave.pdf"
   },
   {
     id: 5,
     title: "PUZZLE MANIA",
     category: "Treasure Hunt",
-    image: "https://images.unsplash.com/photo-1500964757637-c85e8a162699?q=80&w=2078",
+    image: "https://images.stockcake.com/public/7/5/e/75e504f6-f315-43cd-a410-290bf0dfbc79_large/innovative-lightbulb-puzzle-stockcake.jpg",
     description: "Solve riddles, find clues, and race against time. The ultimate treasure hunt awaits you.",
     fee: "₹ 50 (Solo) | ₹ 200 (Group of 4)",
     teamSize: "1 or 4",
@@ -82,7 +86,8 @@ const EVENTS = [
       { name: "A. Manoj Kumar", phone: "+91 99630 13092" },
       { name: "T. Ramya", phone: "" } // Add phone if available
     ],
-    regLink: "https://forms.gle/uQe6hZi75j54Gwcf9"
+    regLink: "https://forms.gle/uQe6hZi75j54Gwcf9",
+    brochureLink: "/brochures/puzzle-mania.pdf"
   },
   {
     id: 6,
@@ -97,7 +102,8 @@ const EVENTS = [
       { name: "V. K. Praneeth Naidu", phone: "+91 63051 81638" },
       { name: "D. Satya Durga", phone: "" }
     ],
-    regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA"
+    regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA",
+    brochureLink: "/brochures/mind-arena.pdf"
   },
   {
     id: 7,
@@ -112,13 +118,14 @@ const EVENTS = [
       { name: "Ch. Kuldeep", phone: "+91 63019 58061" },
       { name: "K. Sushmitha", phone: "" }
     ],
-    regLink: "https://forms.gle/UTZbdAiutHrHZRtP9"
+    regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
+    brochureLink: "/brochures/pixel-lens.pdf"
   },
   {
     id: 8,
     title: "ART SPARK",
     category: "Creative Arts",
-    image: "https://images.unsplash.com/photo-1460661631630-8947b5d36e0d?q=80&w=2070",
+    image: "https://images.pexels.com/photos/1646953/pexels-photo-1646953.jpeg?_gl=1*1kj32c7*_ga*Mjk3MDc5NDAzLjE3NzExNzk1MTI.*_ga_8JE65Q40S6*czE3NzExNzk1MTIkbzEkZzEkdDE3NzExNzk1MjgkajQ0JGwwJGgw",
     description: "Unleash your creativity through colors and sketches. A competition for the artist in you.",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -126,7 +133,8 @@ const EVENTS = [
     coordinators: [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "" }
     ],
-    regLink: "https://forms.gle/GRD9pcYu5rts34PE7"
+    regLink: "https://forms.gle/GRD9pcYu5rts34PE7",
+    brochureLink: "/brochures/art-spark.pdf"
   }
 ];
 
@@ -282,12 +290,24 @@ export default function Events() {
                   </div>
                 </div>
 
-                <button
-                  onClick={() => handleRegister(event.regLink)}
-                  className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-bold tracking-widest hover:bg-neon-cyan hover:text-deep-navy transition-all duration-300 rounded-sm flex items-center gap-2"
-                >
-                  REGISTER <ExternalLink size={16} />
-                </button>
+                <div className="flex gap-4">
+                  <button
+                    onClick={() => handleRegister(event.regLink)}
+                    className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-bold tracking-widest hover:bg-neon-cyan hover:text-deep-navy transition-all duration-300 rounded-sm flex items-center gap-2"
+                  >
+                    REGISTER <ExternalLink size={16} />
+                  </button>
+
+                  <a
+                    href={event.brochureLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 border border-white/10 text-white/60 hover:border-neon-cyan/50 hover:text-neon-cyan transition-all duration-300 text-[10px] tracking-widest uppercase px-4 py-3 rounded-md bg-white/5 backdrop-blur-sm"
+                  >
+                    <FileText className="w-4 h-4" />
+                    <span className="hidden sm:inline">Brochure</span>
+                  </a>
+                </div>
               </div>
             </div>
           ))}
@@ -342,12 +362,22 @@ export default function Events() {
                 </div>
               </div>
 
-              <button
-                onClick={() => handleRegister(event.regLink)}
-                className="w-full py-3 bg-neon-cyan text-deep-navy font-bold text-center tracking-widest uppercase rounded-sm hover:bg-white transition-colors"
-              >
-                Register
-              </button>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <button
+                  onClick={() => handleRegister(event.regLink)}
+                  className="flex-1 py-3 bg-neon-cyan text-deep-navy font-bold text-center tracking-widest uppercase rounded-sm hover:bg-white transition-colors"
+                >
+                  Register
+                </button>
+                <a
+                  href={event.brochureLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 flex items-center justify-center gap-2 border border-white/10 text-white/70 hover:bg-white/5 transition-all text-xs tracking-widest uppercase rounded-sm"
+                >
+                  <FileText className="w-4 h-4" /> Brochure
+                </a>
+              </div>
             </div>
           </motion.div>
         ))}
