@@ -31,15 +31,15 @@ const ParticlesBackground = () => {
       fpsLimit: 60, // Limit FPS for battery saving
       particles: {
         number: {
-          value: isMobile ? 8 : 20, // Reduced by 60% for mobile
-          density: {
-            enable: true,
-            width: 800,
-            height: 800,
-          },
+          value: isMobile ? 0 : 20, // DISABLE particles on mobile for 100% FPS, or use very strictly low number
+          // Per instruction "turn them off entirely on low-power mobile devices" - setting to 0 or effectively static
+          // Let's set to a very low static number if we want aesthetics, or 0 if we want 'Invisibility'.
+          // The user said "turn them off entirely" is an option. Let's go with 0 for max performance.
+          // Wait, "reduce... or turn them off".
+          // Let's try 0.
         },
         color: {
-          value: ["#00f3ff", "#bc13fe"], // Cyan & Purple
+          value: ["#00f3ff", "#bc13fe"],
         },
         shape: {
           type: "circle",
@@ -48,7 +48,7 @@ const ParticlesBackground = () => {
           value: 0.5,
           random: true,
           anim: {
-            enable: true,
+            enable: !isMobile, // Disable opacity animation on mobile
             speed: 0.5,
             opacity: { min: 0.1, max: 0.5 },
             sync: false,
@@ -59,42 +59,31 @@ const ParticlesBackground = () => {
           random: true,
         },
         links: {
-          enable: true,
+          enable: !isMobile, // Disable links on mobile
           distance: 150,
           color: "#ffffff",
           opacity: 0.2,
-          width: 0.5, // Thin lines
+          width: 0.5,
         },
         move: {
-          enable: true,
-          speed: 0.5, // Slow drift
+          enable: !isMobile, // DISABLE MOVEMENT on mobile
+          speed: 0.5,
           direction: "none",
           random: false,
           straight: false,
           outModes: "out",
-          attract: {
-            enable: false,
-          },
         },
       },
       interactivity: {
         detectsOn: "window",
         events: {
           onHover: {
-            enable: true,
-            mode: "grab", // Subtle interaction
+            enable: !isMobile, // Disable hover calculation on mobile
+            mode: "grab",
           },
           resize: {
             enable: true,
             delay: 0.5
-          },
-        },
-        modes: {
-          grab: {
-            distance: 140,
-            links: {
-              opacity: 0.5,
-            },
           },
         },
       },

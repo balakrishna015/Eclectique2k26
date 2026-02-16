@@ -3,15 +3,17 @@ import { useState, useEffect } from "react";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 import Skeleton from "../components/ui/Skeleton";
 
-// --- FACULTY IMAGES ---
-import chiefPatronImg from '../assets/chief patron.webp';
-import patronImg from '../assets/patron.webp';
+// --- FACULTY IMAGES (Cloudinary-Optimized) ---
+// const chiefPatronImg = '../assets/chief patron.webp'; // DEPRECATED
+// const patronImg = '../assets/patron.webp'; // DEPRECATED
+// const coPatronRajeswararaoImg = '../assets/Prof.R.Rajeswararao.webp'; // KEEPING LOCAL (No URL provided)
 import coPatronRajeswararaoImg from '../assets/Prof.R.Rajeswararao.webp';
-import coPatronNagarajuImg from '../assets/Prof.G.J.Nagaraju.webp';
-import chairmanImg from '../assets/Dr.V.S.Vakula.webp';
-import convenorImg from '../assets/Convenor.webp';
-// Convenor image missing, will use fallback
-import coordinatorImg from '../assets/Dr.A.Padmaja.webp';
+// const coPatronNagarajuImg = '../assets/Prof.G.J.Nagaraju.webp'; // DEPRECATED
+// const chairmanImg = '../assets/Dr.V.S.Vakula.webp'; // DEPRECATED
+// const convenorImg = '../assets/Convenor.webp'; // DEPRECATED
+// const coordinatorImg = '../assets/Dr.A.Padmaja.webp'; // DEPRECATED
+
+// --- STUDENT IMAGES (Keeping local until URLs provided) ---
 import MaincoordinatorImg from '../assets/Cherrynischal.webp';
 import FemalecoordinatorImg from '../assets/Gowthami.webp';
 import ManojramImg from '../assets/Manojram.webp';
@@ -23,21 +25,21 @@ import HabibuddhinImg from '../assets/Habibuddhin.webp';
 import type { TeamMember, Section } from "../types";
 
 const FACULTY_SECTIONS: Section[] = [
-  { title: "Chief Patron", members: [{ name: "Prof. V. V. Subbarao", role: "Chief Patron", image: chiefPatronImg }] },
-  { title: "Patron", members: [{ name: "Prof. G. Jaya Suma", role: "Patron", image: patronImg }] },
+  { title: "Chief Patron", members: [{ name: "Prof. V. V. Subbarao", role: "Chief Patron", image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229470/chief_patron_afixjf.webp" }] },
+  { title: "Patron", members: [{ name: "Prof. G. Jaya Suma", role: "Patron", image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229471/patron_drpert.webp" }] },
   {
     title: "Co-Patrons", members: [
       { name: "Prof. R. Rajeswararao", role: "Co-Patron", image: coPatronRajeswararaoImg },
-      { name: "Prof. G. J. N. Nagaraju", role: "Co-Patron", image: coPatronNagarajuImg }
+      { name: "Prof. G. J. N. Nagaraju", role: "Co-Patron", image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229471/Prof.G.J.Nagaraju_arnau2.webp" }
     ]
   },
   // Grouped Administration for side-by-side layout
   {
     title: "Administration",
     members: [
-      { name: "Dr. V. S. Vakula", role: "Chairman", image: chairmanImg },
-      { name: "Dr. K. Srikumar", role: "Convenor", image: convenorImg },
-      { name: "Dr. A. Padmaja", role: "Faculty Coordinator", image: coordinatorImg }
+      { name: "Dr. V. S. Vakula", role: "Chairman", image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229470/Dr.V.S.Vakula_xjicv3.webp" },
+      { name: "Dr. K. Srikumar", role: "Convenor", image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229470/Convenor_ndcynb.webp" },
+      { name: "Dr. A. Padmaja", role: "Faculty Coordinator", image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229469/Dr.A.Padmaja_rnpdj0.webp" }
     ]
   },
 ];
@@ -75,21 +77,28 @@ const STUDENT_SECTIONS: Section[] = [
   },
 ];
 
-// --- CIRCULAR CARD COMPONENT (Optimized) ---
+// --- CIRCULAR CARD COMPONENT (Zero-Lag Optimized) ---
 const CircularCard = ({ member, index }: { member: TeamMember, index: number }) => {
   const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: isMobile ? 10 : 20 }} // Reduced movement on mobile
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "100px" }}
-      transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0 : index * 0.1 }}
-      style={{ willChange: "transform" }} // GPU Promotion
+      viewport={{ once: true, margin: "50px" }} // Tighter viewport for mobile
+      transition={{
+        duration: isMobile ? 0.3 : 0.5,
+        delay: isMobile ? 0 : index * 0.05, // Faster stagger
+        ease: "easeOut"
+      }}
+      style={{ willChange: "transform" }} // Force GPU layer
       className="flex flex-col items-center justify-center p-4"
     >
       {/* CIRCLE CONTAINER */}
-      <div className="relative w-48 h-48 md:w-56 md:h-56 mb-3 md:mb-6">
+      <div
+        className="relative w-48 h-48 md:w-56 md:h-56 mb-3 md:mb-6 aspect-[1/1]" // Forced aspect-ratio
+        style={{ transform: "translateZ(0)" }} // Hardware acceleration trick
+      >
         <div className="absolute inset-0 rounded-full border-2 border-neon-cyan shadow-[0_0_15px_rgba(0,243,255,0.3)] overflow-hidden bg-black/50">
           <ImageWithSkeleton
             src={member.image || `https://ui-avatars.com/api/?name=${encodeURIComponent(member.name)}&background=111&color=00f3ff&font-size=0.4`}
@@ -97,7 +106,7 @@ const CircularCard = ({ member, index }: { member: TeamMember, index: number }) 
             className="w-full h-full object-cover object-center grayscale-0 select-none pointer-events-none"
             onContextMenu={(e: React.MouseEvent) => e.preventDefault()}
             draggable="false"
-            width={224} // Explicit sizing for CLS prevention (max width)
+            width={224}
             height={224}
             loading="lazy"
             decoding="async"
@@ -105,14 +114,11 @@ const CircularCard = ({ member, index }: { member: TeamMember, index: number }) 
         </div>
       </div>
 
-      {/* TEXT MATCHING REFERENCE */}
+      {/* TEXT */}
       <div className="text-center mt-4 relative z-10">
-        {/* Name in CYAN */}
         <h3 className="text-neon-cyan font-bold text-xl md:text-2xl tracking-wide uppercase font-sans mb-1 break-words max-w-[140px] md:max-w-none">
           {member.name}
         </h3>
-
-        {/* Role in GOLD/ORANGE */}
         <p className="text-amber-600 font-mono text-[12px] md:text-sm tracking-[0.25em] uppercase font-bold">
           {member.role || "MEMBER"}
         </p>
