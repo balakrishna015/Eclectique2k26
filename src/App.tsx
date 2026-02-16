@@ -7,7 +7,7 @@ import Team from "./pages/Team";
 import Accommodation from "./pages/Accommodation";
 import Sponsors from "./pages/Sponsors";
 import Gallery from "./pages/Gallery";
-import Brochure from "./pages/Brochure";
+import Brochures from "./pages/Brochures";
 import ScrollToTop from "./components/ScrollToTop";
 import PageTransition from "./components/PageTransition";
 import Footer from "./components/Footer";
@@ -25,7 +25,7 @@ const AnimatedRoutes = () => {
         <Route path="/stay" element={<PageTransition><Accommodation /></PageTransition>} />
         <Route path="/sponsors" element={<PageTransition><Sponsors /></PageTransition>} />
         <Route path="/gallery" element={<PageTransition><Gallery /></PageTransition>} />
-        <Route path="/brochure" element={<PageTransition><Brochure /></PageTransition>} />
+        <Route path="/brochures" element={<PageTransition><Brochures /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

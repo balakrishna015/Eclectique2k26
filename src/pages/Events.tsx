@@ -13,7 +13,7 @@ const EVENTS = [
     id: 1,
     title: "EV TECHNOLOGY",
     category: "Workshop",
-    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072",
+    image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&fm=webp",
     description: "An immersive workshop involving the breakdown coverage of Electric Vehicles. Hands-on experience in BMS, Motor Design, and Power Controllers.",
     fee: "₹ 999/-",
     teamSize: "Individual",
@@ -29,7 +29,7 @@ const EVENTS = [
     id: 2,
     title: "TABLEAU",
     category: "Workshop",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&fm=webp",
     description: "Master the art of Data Visualization. Learn how to connect data sources, create impactful dashboards, and tell stories with data using Tableau.",
     fee: "₹ 499/-",
     teamSize: "Individual",
@@ -61,7 +61,7 @@ const EVENTS = [
     id: 4,
     title: "BRAIN WAVE",
     category: "Quiz",
-    image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=2070&fm=webp",
     description: "Test your knowledge in technical and general trivia. A battle of wits to claim the title of the smartest mind.",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -93,7 +93,7 @@ const EVENTS = [
     id: 6,
     title: "MIND ARENA",
     category: "Tech Challenge",
-    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070",
+    image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=2070&fm=webp",
     description: "A series of mind-bending technical challenges designed to push your problem-solving skills to the limit.",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -109,7 +109,7 @@ const EVENTS = [
     id: 7,
     title: "PIXEL LENS",
     category: "Photography",
-    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000",
+    image: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&fm=webp",
     description: "Capture the essence of Eclectique. A photography contest to showcase your unique perspective.",
     fee: "₹ 50/-",
     teamSize: "Individual",
@@ -239,6 +239,8 @@ export default function Events() {
                   src={event.image}
                   alt={event.title}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 
@@ -331,6 +333,8 @@ export default function Events() {
                 src={event.image}
                 alt={event.title}
                 className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-deep-navy via-transparent to-transparent opacity-80" />
             </div>

@@ -41,6 +41,8 @@ const MobileGalleryItem = ({ item }: { item: typeof GALLERY_IMAGES[0] }) => {
             src={item.src}
             alt={item.alt}
             className="w-full h-full object-cover"
+            loading="lazy"
+            decoding="async"
           />
         </div>
 
@@ -114,7 +116,13 @@ const Gallery = () => {
                 <div className="absolute inset-0 z-20 border-2 border-neon-cyan/50 pointer-events-none rounded-2xl shadow-[inset_0_0_20px_rgba(0,243,255,0.2)]" />
               )}
               <div className="absolute inset-0 z-0">
-                <ImageWithSkeleton src={item.src} alt={item.alt} className="w-full h-full object-cover" />
+                <ImageWithSkeleton 
+                  src={item.src} 
+                  alt={item.alt} 
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async" 
+                />
                 <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-60"}`} />
               </div>
               <div className="absolute inset-0 z-10 p-6 flex flex-col justify-end overflow-hidden">

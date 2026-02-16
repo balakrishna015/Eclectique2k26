@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -11,10 +11,10 @@ const Navbar = () => {
     { name: "Home", path: "/" },
     { name: "Events", path: "/events" },
     { name: "Team", path: "/team" },
-    { name: "Stay", path: "/stay" }, // Added Stay Link
+    { name: "Stay", path: "/stay" },
     // { name: "Sponsors", path: "/sponsors" },
     { name: "Gallery", path: "/gallery" },
-    { name: "Brochure", path: "/brochure" },
+    { name: "Brochure", path: "/brochures" },
   ];
 
   const toggleMenu = () => setIsOpen(!isOpen);
