@@ -42,7 +42,7 @@ const EVENTS: EventData[] = [
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
     regLink: "https://forms.gle/wbWZJX9VEMktp1hy5",
-    brochureLink: "/brochures/tableau-workshop.pdf",
+    // brochureLink: "/brochures/tableau-workshop.pdf",
     rules: []
   },
   {
@@ -59,7 +59,8 @@ const EVENTS: EventData[] = [
       { name: "I. Hariharan", phone: "+91 96767 59375" }
     ],
     regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
-    brochureLink: "/brochures/watt-vision.pdf",
+
+    // brochureLink: "/brochures/watt-vision.pdf",
     rules: []
   },
   {
@@ -76,7 +77,8 @@ const EVENTS: EventData[] = [
       { name: "Sheik Aziz", phone: "+91 99083 44734" }
     ],
     regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
-    brochureLink: "/brochures/brain-wave.pdf",
+
+    // brochureLink: "/brochures/brain-wave.pdf",
     rules: []
   },
   {
@@ -93,7 +95,8 @@ const EVENTS: EventData[] = [
       { name: "T. Ramya", phone: "" } // Add phone if available
     ],
     regLink: "https://forms.gle/uQe6hZi75j54Gwcf9",
-    brochureLink: "/brochures/puzzle-mania.pdf",
+
+    // brochureLink: "/brochures/puzzle-mania.pdf",
     rules: []
   },
   {
@@ -110,7 +113,8 @@ const EVENTS: EventData[] = [
       { name: "D. Satya Durga", phone: "" }
     ],
     regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA",
-    brochureLink: "/brochures/mind-arena.pdf",
+
+    // brochureLink: "/brochures/mind-arena.pdf",
     rules: []
   },
   {
@@ -127,7 +131,7 @@ const EVENTS: EventData[] = [
       { name: "K. Sushmitha", phone: "" }
     ],
     regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
-    brochureLink: "/brochures/pixel-lens.pdf",
+    // brochureLink: "/brochures/pixel-lens.pdf",
     rules: []
   },
   {
@@ -143,7 +147,7 @@ const EVENTS: EventData[] = [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "" }
     ],
     regLink: "https://forms.gle/GRD9pcYu5rts34PE7",
-    brochureLink: "/brochures/art-spark.pdf",
+    // brochureLink: "/brochures/art-spark.pdf",
     rules: []
   }
 ];
@@ -310,15 +314,19 @@ export default function Events() {
                     REGISTER <ExternalLink size={16} />
                   </button>
 
-                  <a
-                    href={event.brochureLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 border border-white/10 text-white/60 hover:border-neon-cyan/50 hover:text-neon-cyan transition-all duration-300 text-[10px] tracking-widest uppercase px-4 py-3 rounded-md bg-white/5 backdrop-blur-sm"
-                  >
-                    <FileText className="w-4 h-4" />
-                    <span className="hidden sm:inline">Brochure</span>
-                  </a>
+
+
+                  {event.brochureLink && (
+                    <a
+                      href={event.brochureLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 border border-white/10 text-white/60 hover:border-neon-cyan/50 hover:text-neon-cyan transition-all duration-300 text-[10px] tracking-widest uppercase px-4 py-3 rounded-md bg-white/5 backdrop-blur-sm"
+                    >
+                      <FileText className="w-4 h-4" />
+                      <span className="hidden sm:inline">Brochure</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
@@ -383,20 +391,25 @@ export default function Events() {
                 >
                   Register
                 </button>
-                <a
-                  href={event.brochureLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1 py-3 flex items-center justify-center gap-2 border border-white/10 text-white/70 hover:bg-white/5 transition-all text-xs tracking-widest uppercase rounded-sm"
-                >
-                  <FileText className="w-4 h-4" /> Brochure
-                </a>
+
+                {event.brochureLink && (
+                  <a
+                    href={event.brochureLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1 py-3 flex items-center justify-center gap-2 border border-white/10 text-white/70 hover:bg-white/5 transition-all text-xs tracking-widest uppercase rounded-sm"
+                  >
+                    <FileText className="w-4 h-4" /> Brochure
+                  </a>
+                )}
               </div>
             </div>
-          </motion.div>
-        ))}
-      </div>
 
-    </div>
+          </motion.div>
+        ))
+        }
+      </div >
+
+    </div >
   );
 }
