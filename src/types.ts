@@ -17,3 +17,16 @@ export interface EventData {
   regLink: string;
   brochureLink?: string;
 }
+
+export interface TeamMember {
+  name: string;
+  role?: string;
+  image?: string;
+  status?: string;
+}
+
+export interface Section {
+  title: string;
+  members: TeamMember[];
+}
+

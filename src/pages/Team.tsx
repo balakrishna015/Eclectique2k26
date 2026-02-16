@@ -20,19 +20,9 @@ import HabibuddhinImg from '../assets/Habibuddhin.webp';
 
 
 // --- DATA ---
-type TeamMember = {
-  name: string;
-  role?: string; // This corresponds to the Gold/Orange text
-  image?: string;
-  status?: string; // Optional: "To be updated" text if needed
-};
+import type { TeamMember, Section } from "../types";
 
-type SectionData = {
-  title: string;
-  members: TeamMember[];
-};
-
-const FACULTY_SECTIONS: SectionData[] = [
+const FACULTY_SECTIONS: Section[] = [
   { title: "Chief Patron", members: [{ name: "Prof. V. V. Subbarao", role: "Chief Patron", image: chiefPatronImg }] },
   { title: "Patron", members: [{ name: "Prof. G. Jaya Suma", role: "Patron", image: patronImg }] },
   {
@@ -52,7 +42,7 @@ const FACULTY_SECTIONS: SectionData[] = [
   },
 ];
 
-const STUDENT_SECTIONS: SectionData[] = [
+const STUDENT_SECTIONS: Section[] = [
   {
     title: "Main Coordinators",
     members: [
