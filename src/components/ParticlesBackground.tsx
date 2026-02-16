@@ -31,7 +31,7 @@ const ParticlesBackground = () => {
       fpsLimit: 60, // Limit FPS for battery saving
       particles: {
         number: {
-          value: isMobile ? 10 : 20, // Minimal count
+          value: isMobile ? 8 : 20, // Reduced by 60% for mobile
           density: {
             enable: true,
             width: 800,

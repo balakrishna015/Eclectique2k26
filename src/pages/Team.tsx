@@ -75,14 +75,17 @@ const STUDENT_SECTIONS: Section[] = [
   },
 ];
 
-// --- CIRCULAR CARD COMPONENT (Exact Match) ---
+// --- CIRCULAR CARD COMPONENT (Optimized) ---
 const CircularCard = ({ member, index }: { member: TeamMember, index: number }) => {
+  const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
+      viewport={{ once: true, margin: "100px" }}
+      transition={{ duration: isMobile ? 0.4 : 0.6, delay: isMobile ? 0 : index * 0.1 }}
+      style={{ willChange: "transform" }} // GPU Promotion
       className="flex flex-col items-center justify-center p-4"
     >
       {/* CIRCLE CONTAINER */}
@@ -94,6 +97,10 @@ const CircularCard = ({ member, index }: { member: TeamMember, index: number }) 
             className="w-full h-full object-cover object-center grayscale-0 select-none pointer-events-none"
             onContextMenu={(e: React.MouseEvent) => e.preventDefault()}
             draggable="false"
+            width={224} // Explicit sizing for CLS prevention (max width)
+            height={224}
+            loading="lazy"
+            decoding="async"
           />
         </div>
       </div>
@@ -117,7 +124,10 @@ const CircularCard = ({ member, index }: { member: TeamMember, index: number }) 
 // --- SECTION COMPONENT ---
 const Section = ({ title, members }: { title: string, members: TeamMember[] }) => {
   return (
-    <div className="mb-20 w-full flex flex-col items-center">
+    <div
+      className="mb-20 w-full flex flex-col items-center"
+      style={{ contentVisibility: "auto", containIntrinsicSize: "800px" }} // Rendering optimization
+    >
       {/* SECTION HEADER: --- PATRONS --- */}
       <div className="flex items-center gap-4 mb-12 opacity-80">
         <div className="h-[1px] w-8 md:w-16 bg-gray-600" />
