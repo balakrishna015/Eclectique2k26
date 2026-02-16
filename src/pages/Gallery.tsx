@@ -47,75 +47,88 @@ const Gallery = () => {
         </p>
       </motion.div>
 
-      {/* --- DESKTOP VIEW (Accordion) --- */}
-      <div className="hidden md:flex gap-2 w-full max-w-[1920px] mx-auto h-[600px] flex-grow transition-all duration-500">
-        {GALLERY_IMAGES.map((item) => {
-          const isActive = activeId === item.id;
-          return (
-            <div
-              key={item.id}
-              onMouseEnter={() => setActiveId(item.id)}
-              onMouseLeave={() => setActiveId(null)}
-              className={`
-                relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
-                ${isActive ? "flex-[5] grayscale-0 opacity-100" : "flex-1 grayscale opacity-60 hover:opacity-80"}
-                border border-white/10 rounded-2xl
-              `}
-            >
-              {isActive && (
-                <div className="absolute inset-0 z-20 border-2 border-neon-cyan/50 pointer-events-none rounded-2xl shadow-[inset_0_0_20px_rgba(0,243,255,0.2)]" />
-              )}
-              <div className="absolute inset-0 z-0">
-                <ImageWithSkeleton
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-60"}`} />
-              </div>
-              <div className="absolute inset-0 z-10 p-6 flex flex-col justify-end overflow-hidden">
+      {GALLERY_IMAGES.length === 0 ? (
+        <div className="flex-grow flex items-center justify-center min-h-[40vh]">
+          <div className="text-center p-8 border border-white/10 rounded-2xl bg-white/5 backdrop-blur-sm">
+            <h3 className="text-2xl font-display font-bold text-white mb-2">CAPTURING MEMORIES...</h3>
+            <p className="text-gray-400 font-mono text-xs tracking-widest uppercase">
+              Gallery coming soon
+            </p>
+          </div>
+        </div>
+      ) : (
+        <>
+          {/* --- DESKTOP VIEW (Accordion) --- */}
+          <div className="hidden md:flex gap-2 w-full max-w-[1920px] mx-auto h-[600px] flex-grow transition-all duration-500">
+            {GALLERY_IMAGES.map((item) => {
+              const isActive = activeId === item.id;
+              return (
                 <div
+                  key={item.id}
+                  onMouseEnter={() => setActiveId(item.id)}
+                  onMouseLeave={() => setActiveId(null)}
                   className={`
-                    absolute bottom-8 left-1/2 -translate-x-1/2 items-center justify-center whitespace-nowrap origin-center transition-all duration-500 delay-100
-                    ${isActive ? "opacity-0 rotate-0 scale-90 blur-sm pointer-events-none" : "opacity-100 -rotate-90"}
+                    relative overflow-hidden cursor-pointer transition-all duration-700 ease-[cubic-bezier(0.25,1,0.5,1)]
+                    ${isActive ? "flex-[5] grayscale-0 opacity-100" : "flex-1 grayscale opacity-60 hover:opacity-80"}
+                    border border-white/10 rounded-2xl
                   `}
                 >
-                  <span className="text-white/70 font-mono text-xs tracking-[0.2em] uppercase">{item.alt}</span>
+                  {isActive && (
+                    <div className="absolute inset-0 z-20 border-2 border-neon-cyan/50 pointer-events-none rounded-2xl shadow-[inset_0_0_20px_rgba(0,243,255,0.2)]" />
+                  )}
+                  <div className="absolute inset-0 z-0">
+                    <ImageWithSkeleton
+                      src={item.src}
+                      alt={item.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <div className={`absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent transition-opacity duration-500 ${isActive ? "opacity-100" : "opacity-60"}`} />
+                  </div>
+                  <div className="absolute inset-0 z-10 p-6 flex flex-col justify-end overflow-hidden">
+                    <div
+                      className={`
+                        absolute bottom-8 left-1/2 -translate-x-1/2 items-center justify-center whitespace-nowrap origin-center transition-all duration-500 delay-100
+                        ${isActive ? "opacity-0 rotate-0 scale-90 blur-sm pointer-events-none" : "opacity-100 -rotate-90"}
+                      `}
+                    >
+                      <span className="text-white/70 font-mono text-xs tracking-[0.2em] uppercase">{item.alt}</span>
+                    </div>
+                    <div className={`
+                        flex flex-col gap-1 transition-all duration-500
+                        ${isActive ? "translate-y-0 opacity-100 delay-200" : "translate-y-10 opacity-0"} 
+                      `}
+                    >
+                      <h3 className="text-3xl font-display font-bold text-white uppercase tracking-wider leading-none">
+                        {item.alt}
+                      </h3>
+                      <p className="text-neon-cyan font-mono text-xs tracking-widest uppercase">
+                        {item.desc} // 0{item.id}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className={`
-                    flex flex-col gap-1 transition-all duration-500
-                    ${isActive ? "translate-y-0 opacity-100 delay-200" : "translate-y-10 opacity-0"} 
-                  `}
-                >
-                  <h3 className="text-3xl font-display font-bold text-white uppercase tracking-wider leading-none">
-                    {item.alt}
-                  </h3>
-                  <p className="text-neon-cyan font-mono text-xs tracking-widest uppercase">
-                    {item.desc} // 0{item.id}
-                  </p>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+              );
+            })}
+          </div>
 
-      {/* --- MOBILE VIEW (Horizontal Filmstrip) --- */}
-      <div className="md:hidden w-full flex flex-col items-center justify-center flex-grow mt-4">
-        <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-4 px-[7.5vw] py-10 scrollbar-hide">
-          {GALLERY_IMAGES.map((item) => (
-            <MobileGalleryItem key={item.id} item={item} />
-          ))}
-        </div>
-        {/* Swipe Hint */}
-        <div className="text-center mt-4">
-          <p className="text-white/30 text-[10px] tracking-[0.3em] uppercase animate-pulse">
-            [ SWIPE TO NAVIGATE ]
-          </p>
-        </div>
-      </div>
+          {/* --- MOBILE VIEW (Horizontal Filmstrip) --- */}
+          <div className="md:hidden w-full flex flex-col items-center justify-center flex-grow mt-4">
+            <div className="w-full flex overflow-x-auto snap-x snap-mandatory gap-4 px-[7.5vw] py-10 scrollbar-hide">
+              {GALLERY_IMAGES.map((item) => (
+                <MobileGalleryItem key={item.id} item={item} />
+              ))}
+            </div>
+            {/* Swipe Hint */}
+            <div className="text-center mt-4">
+              <p className="text-white/30 text-[10px] tracking-[0.3em] uppercase animate-pulse">
+                [ SWIPE TO NAVIGATE ]
+              </p>
+            </div>
+          </div>
+        </>
+      )}
 
       {/* FOOTER HINT */}
       <div className="text-center mt-8 hidden md:block">

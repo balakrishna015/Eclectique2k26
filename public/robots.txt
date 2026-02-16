@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://eclectique2k26.com/sitemap.xml
