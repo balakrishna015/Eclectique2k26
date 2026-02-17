@@ -60,7 +60,7 @@ const Accommodation = () => {
               Includes: Stay + Food Implications
             </div>
             <a
-              href="https://forms.google.com/accommodation"
+              href="https://tinyurl.com/45ku73nr"
               target="_blank"
               rel="noopener noreferrer"
               className="block w-full bg-neon-cyan text-deep-navy py-3 rounded font-bold tracking-widest hover:bg-white transition-colors duration-300"
