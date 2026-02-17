@@ -46,7 +46,7 @@ const FACULTY_SECTIONS: Section[] = [
 
 const STUDENT_SECTIONS: Section[] = [
   {
-    title: "Main Coordinators",
+    title: "Student Coordinators",
     members: [
       { name: "Y. Chery Nischal", role: "Coordinator", image: MaincoordinatorImg },
       { name: "G. Gowthami", role: "Coordinator", image: FemalecoordinatorImg },
