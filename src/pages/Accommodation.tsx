@@ -5,8 +5,8 @@ const Accommodation = () => {
   const coordinators = [
     { name: "H. Sandeep", role: "Accommodation Coordinator", phone: "+91 77021 72646" },
     { name: "Mohit", role: "Accommodation Coordinator", phone: "+91 90639 03443" },
-    { name: "Chinta Jyothi", role: "Accommodation (Girls)", phone: "+91 93814 56679" },
-    { name: "Kadha Susmitha", role: "Accommodation (Girls)", phone: "+91 91820 06336" }
+    { name: "Ch Jyothi", role: "Accommodation (Girls)", phone: "+91 93814 56679" },
+    { name: "B Mohini", role: "Accommodation (Girls)", phone: "+91 73867 91690" }
   ];
 
   return (
