@@ -75,7 +75,7 @@ const EVENTS_DATA: EventData[] = [
   },
   {
     id: 5,
-    title: "PUZZLE MANIA",
+    title: "TREASURE HUNT",
     category: "Treasure Hunt",
     image: "https://images.stockcake.com/public/7/5/e/75e504f6-f315-43cd-a410-290bf0dfbc79_large/innovative-lightbulb-puzzle-stockcake.jpg",
     fee: "₹ 50 (Solo) | ₹ 200 (Group of 4)",
