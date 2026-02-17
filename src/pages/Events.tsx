@@ -83,7 +83,7 @@ const EVENTS: EventData[] = [
   },
   {
     id: 5,
-    title: "PUZZLE MANIA",
+    title: "TREASURE  HUNT",
     category: "Treasure Hunt",
     image: "https://images.stockcake.com/public/7/5/e/75e504f6-f315-43cd-a410-290bf0dfbc79_large/innovative-lightbulb-puzzle-stockcake.jpg",
     description: "Solve riddles, find clues, and race against time. The ultimate treasure hunt awaits you.",
