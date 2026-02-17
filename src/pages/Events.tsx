@@ -56,7 +56,7 @@ const EVENTS: EventData[] = [
     time: "Mar 5, 10:00 AM",
     coordinators: [
       { name: "B. Teja", phone: "+91 83742 30526" },
-      { name: "I. Hariharan", phone: "+91 96767 59375" }
+      { name: "L.Swathi", phone: "+91 96767 59375" }
     ],
     regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
 
@@ -74,7 +74,7 @@ const EVENTS: EventData[] = [
     time: "Mar 5, 11:00 AM",
     coordinators: [
       { name: "K. P. Chaitanya Varma", phone: "+91 93475 88627" },
-      { name: "Sheik Aziz", phone: "+91 99083 44734" }
+      { name: "G.Ramadevi", phone: "+91 99083 44734" }
     ],
     regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
 
