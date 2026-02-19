@@ -22,7 +22,7 @@ const EVENTS_DATA: EventData[] = [
       { name: "Koppisetti Karthikeya", phone: "+91 86887 85636" },
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
-    regLink: "https://forms.gle/AgRYxchbP5Y6AA1z9"
+    regLink: "https://forms.gle/WE2a9V9gnWWGbfzj7"
   },
   {
     id: 2,
