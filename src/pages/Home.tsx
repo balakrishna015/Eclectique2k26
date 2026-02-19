@@ -13,7 +13,7 @@ const EVENTS_DATA: EventData[] = [
     title: "EV TECHNOLOGY",
     category: "Workshop",
     image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072",
-    fee: "₹ 999/-",
+    fee: "₹ 700/-",
     teamSize: "Individual",
     time: "Mar 4, 9:00 AM - 5:00 PM",
     description: "An immersive workshop involving the breakdown coverage of Electric Vehicles. Hands-on experience in BMS, Motor Design, and Power Controllers.",
