@@ -8,65 +8,65 @@ const BROCHURES = [
     id: 0,
     title: "MAIN BROCHURE",
     category: "Official Guide",
-    image: "/brochures/main-brochure.webp", // Ensure this image exists
-    link: "/brochures/main-brochure.webp",
+    image: "../../brochures/Main-brochure.webp", // Ensure this image exists
+    link: "../../brochures/Main-brochure.webp",
     isMain: true
   },
   {
     id: 1,
     title: "EV TECHNOLOGY",
     category: "Workshop",
-    image: "/brochures/ev-workshop.webp",
-    link: "/brochures/ev-workshop.webp"
+    image: "../../brochures/ev-workshop.webp",
+    link: "../../brochures/ev-workshop.webp"
   },
   {
     id: 2,
     title: "TABLEAU",
     category: "Workshop",
-    image: "/brochures/tableau-workshop.webp",
-    link: "/brochures/tableau-workshop.webp"
+    image: "../../brochures/tableau-workshop.webp",
+    link: "../../brochures/tableau-workshop.webp"
   },
   {
     id: 3,
     title: "WATT VISION",
     category: "Project Expo",
-    image: "/brochures/watt-vision.webp",
-    link: "/brochures/watt-vision.webp"
+    image: "../../brochures/wattvision.webp",
+    link: "../../brochures/wattvision.webp"
   },
   {
     id: 4,
     title: "BRAIN WAVE",
     category: "Quiz",
-    image: "/brochures/brain-wave.webp",
-    link: "/brochures/brain-wave.webp"
+    image: "../../brochures/Brainwave.webp",
+    link: "../../brochures/Brainwave.webp"
   },
   {
     id: 5,
-    title: "PUZZLE MANIA",
+    title: "Treasure Hunt",
     category: "Treasure Hunt",
-    image: "/brochures/puzzle-mania.webp",
-    link: "/brochures/puzzle-mania.webp"
+    image: "../../brochures/TreasureHunt.webp",
+    link: "../../brochures/puzzle-mania.webp"
   },
   {
     id: 6,
     title: "MIND ARENA",
     category: "Tech Challenge",
-    image: "/brochures/mind-arena.webp",
-    link: "/brochures/mind-arena.webp"
+    image: "../../brochures/Mindarena.webp",
+    link: "../../brochures/Mindarena.webp"
   },
   {
     id: 7,
     title: "PIXEL LENS",
     category: "Photography",
-    image: "/brochures/pixel-lens.webp",
-    link: "/brochures/pixel-lens.webp"
+    image: "../../brochures/Pixel-lens.webp",
+    link: "../../brochures/Pixel-lens.webp"
   },
   {
     id: 8,
     title: "ART SPARK",
     category: "Creative Arts",
-    image: "/brochures/art-spark.webp",
-    link: "/brochures/art-spark.webp"
+    image: "../../brochures/Artspark.webp",
+    link: "../../brochures/Artspark.webp"
   }
 ];
 
@@ -89,7 +89,7 @@ const Brochures = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-4xl md:text-6xl font-display font-bold text-white mb-4 tracking-wider"
           >
-            THE <span className="text-neon-cyan">ARCHIVES</span>
+            THE <span className="text-neon-cyan">BROCHURES</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0 }}

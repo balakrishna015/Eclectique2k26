@@ -23,6 +23,8 @@ export interface TeamMember {
   role?: string;
   image?: string;
   status?: string;
+  designation?: string;
+  roll?: string;
 }
 
 export interface Section {
