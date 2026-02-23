@@ -13,19 +13,19 @@ import type { EventData } from "../types";
 const EVENTS: EventData[] = [
   {
     id: 1,
-    title: "EV TECHNOLOGY",
+    title: "EV WORKSHOP",
     category: "Workshop",
     image: "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?q=80&w=2072&fm=webp",
     description: "An immersive workshop involving the breakdown coverage of Electric Vehicles. Hands-on experience in BMS, Motor Design, and Power Controllers.",
     fee: "₹ 700/-",
     teamSize: "Individual",
-    time: "Mar 4, 9:00 AM - 5:00 PM",
+    time: "Mar 4 & 5, 9:00 AM - 5:00 PM",
     coordinators: [
       { name: "Koppisetti Karthikeya", phone: "+91 86887 85636" },
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
     regLink: "https://forms.gle/WE2a9V9gnWWGbfzj7",
-    brochureLink: "/brochures/ev-workshop.pdf",
+    brochureLink: "../../brochures/ev-workshop.pdf",
     rules: []
   },
   {
@@ -42,7 +42,7 @@ const EVENTS: EventData[] = [
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
     regLink: "https://forms.gle/wbWZJX9VEMktp1hy5",
-    // brochureLink: "/brochures/tableau-workshop.pdf",
+     brochureLink: "/brochures/tableau-workshop.pdf",
     rules: []
   },
   {
@@ -60,7 +60,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
 
-    // brochureLink: "/brochures/watt-vision.pdf",
+     brochureLink: "/brochures/watt-vision.pdf",
     rules: []
   },
   {
@@ -78,7 +78,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
 
-    // brochureLink: "/brochures/brain-wave.pdf",
+     brochureLink: "/brochures/brain-wave.pdf",
     rules: []
   },
   {
@@ -96,7 +96,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/uQe6hZi75j54Gwcf9",
 
-    // brochureLink: "/brochures/puzzle-mania.pdf",
+     brochureLink: "/brochures/Treasure_Hunt.pdf",
     rules: []
   },
   {
@@ -114,7 +114,8 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA",
 
-    // brochureLink: "/brochures/mind-arena.pdf",
+     brochureLink: "/brochures/mind-arena.pdf",
+     brochureLink: "/brochures/mind-arena.pdf",
     rules: []
   },
   {
@@ -131,7 +132,7 @@ const EVENTS: EventData[] = [
       { name: "K. Sushmitha", phone: "" }
     ],
     regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
-    // brochureLink: "/brochures/pixel-lens.pdf",
+     brochureLink: "/brochures/pixel-lens.pdf",
     rules: []
   },
   {
@@ -147,7 +148,7 @@ const EVENTS: EventData[] = [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "" }
     ],
     regLink: "https://forms.gle/GRD9pcYu5rts34PE7",
-    // brochureLink: "/brochures/art-spark.pdf",
+     brochureLink: "/brochures/art-spark.pdf",
     rules: []
   }
 ];
