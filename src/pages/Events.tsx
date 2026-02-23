@@ -42,7 +42,7 @@ const EVENTS: EventData[] = [
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
     regLink: "https://forms.gle/wbWZJX9VEMktp1hy5",
-     brochureLink: "/brochures/tableau-workshop.pdf",
+     brochureLink: "../../brochures/tableau-workshop.pdf",
     rules: []
   },
   {
@@ -60,7 +60,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
 
-     brochureLink: "/brochures/watt-vision.pdf",
+     brochureLink: "../../brochures/watt-vision.pdf",
     rules: []
   },
   {
@@ -78,7 +78,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
 
-     brochureLink: "/brochures/brain-wave.pdf",
+     brochureLink: "../../brochures/brain-wave.pdf",
     rules: []
   },
   {
@@ -92,11 +92,11 @@ const EVENTS: EventData[] = [
     time: "Mar 5, 2:00 PM",
     coordinators: [
       { name: "A. Manoj Kumar", phone: "+91 99630 13092" },
-      { name: "T. Ramya", phone: "" } // Add phone if available
+      { name: "T. Ramya", phone: "+91 99630 13092" } // Add phone if available
     ],
     regLink: "https://forms.gle/uQe6hZi75j54Gwcf9",
 
-     brochureLink: "/brochures/Treasure_Hunt.pdf",
+     brochureLink: "../../brochures/Treasure_Hunt.pdf",
     rules: []
   },
   {
@@ -110,12 +110,11 @@ const EVENTS: EventData[] = [
     time: "Mar 5, 10:00 AM",
     coordinators: [
       { name: "V. K. Praneeth Naidu", phone: "+91 63051 81638" },
-      { name: "D. Satya Durga", phone: "" }
+      { name: "D. Satya Durga", phone: "+91 63051 81638" }
     ],
     regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA",
 
-     brochureLink: "/brochures/mind-arena.pdf",
-     brochureLink: "/brochures/mind-arena.pdf",
+     brochureLink: "../../brochures/mind-arena.pdf",
     rules: []
   },
   {
@@ -129,10 +128,10 @@ const EVENTS: EventData[] = [
     time: "Mar 4-5 (All Day)",
     coordinators: [
       { name: "Ch. Kuldeep", phone: "+91 63019 58061" },
-      { name: "K. Sushmitha", phone: "" }
+      { name: "K. Sushmitha", phone: "+91 63019 58061" }
     ],
     regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
-     brochureLink: "/brochures/pixel-lens.pdf",
+     brochureLink: "../../brochures/pixel-lens.pdf",
     rules: []
   },
   {
@@ -145,10 +144,10 @@ const EVENTS: EventData[] = [
     teamSize: "Individual",
     time: "Mar 5, 1:00 PM",
     coordinators: [
-      { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "" }
+      { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "+91 73966 72320" }
     ],
     regLink: "https://forms.gle/GRD9pcYu5rts34PE7",
-     brochureLink: "/brochures/art-spark.pdf",
+     brochureLink: "../../brochures/art-spark.pdf",
     rules: []
   }
 ];
