@@ -25,11 +25,7 @@ const EVENTS: EventData[] = [
       { name: "Nakka Keerthana", phone: "+91 93818 85336" }
     ],
     regLink: "https://forms.gle/WE2a9V9gnWWGbfzj7",
-<<<<<<< HEAD
     brochureLink: "../../brochures/ev-workshop.pdf",
-=======
-    brochureLink: "../../brochures/ev-workshop.webp",
->>>>>>> 72c9d909c676abbf6495633f2e9e91ff5ddc13a1
     rules: []
   },
   {
