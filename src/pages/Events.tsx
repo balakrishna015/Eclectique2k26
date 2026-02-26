@@ -34,7 +34,7 @@ const EVENTS: EventData[] = [
     category: "Workshop",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=2070&fm=webp",
     description: "Master the art of Data Visualization. Learn how to connect data sources, create impactful dashboards, and tell stories with data using Tableau.",
-    fee: "₹ 499/-",
+    fee: "₹ 500/-",
     teamSize: "Individual",
     time: "Mar 4, 9:00 AM - 5:00 PM",
     coordinators: [

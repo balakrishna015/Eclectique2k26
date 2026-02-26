@@ -39,7 +39,7 @@ const FACULTY_SECTIONS: Section[] = [
     title: "Co-Patrons",
     members: [
       {
-        name: "Prof. R. Rajeswararao", role: "Co-Patron", designation: "Principal",
+        name: "Dr. K. Chandra Bhushana Rao", role: "Co-Patron", designation: "Principal",
         image: "https://jntugvcev.edu.in/wp-content/uploads/2024/12/Dr.-RRR-Principal-page.jpeg"
       },
       {

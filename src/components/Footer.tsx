@@ -37,6 +37,7 @@ const Footer = () => {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
             Department of Electrical & Electronics Engineering<br />
+            JNTU-GV CEV(A), Vizianagaram<br />
             JNTU-GV, Vizianagaram<br />
             Andhra Pradesh, India
           </p>
