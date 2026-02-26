@@ -131,7 +131,7 @@ const EVENTS: EventData[] = [
       { name: "K. Sushmitha", phone: "+91 63019 58061" }
     ],
     regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
-     brochureLink: "../../brochures/pixel-lens.png",
+     brochureLink: "../../brochures/Pixel-lens.png",
     rules: []
   },
   {

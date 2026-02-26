@@ -391,8 +391,8 @@ const Home = () => {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.12 }}
-              className="text-lg md:text-2xl font-semibold mb-1 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
+              transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              className="text-lg md:text-2xl font-semibold mb-1 tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
             >
               Department of Electrical and Electronics Engineering
             </motion.h3>
@@ -402,7 +402,7 @@ const Home = () => {
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.22 }}
+              transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
               className="text-gray-400 text-sm md:text-base font-light tracking-wide mb-6"
             >
               Jawaharlal Nehru Technological University Gurajada Vizianagaram
@@ -410,73 +410,85 @@ const Home = () => {
 
             <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-10 rounded-full" />
 
-            {/* ── FOUR-LOGO GRID : 2×2 mobile / 4×1 desktop ── */}
+            {/* ── BRAND WALL (FOUR-LOGO GRID) ────────────────── */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.32 }}
-              className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 md:gap-x-10 items-center justify-items-center mb-10 max-w-3xl mx-auto"
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md mb-12 max-w-3xl mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)]"
             >
-              {/* 1 — JNTUGV University Logo */}
-              <div className="flex flex-col items-center gap-2">
-                <img
-                  src={jntugvLogo}
-                  alt="JNTUGV Official Logo"
-                  className="h-16 md:h-20 w-auto object-contain"
-                  style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
-                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.25"; }}
-                />
-                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">JNTUGV</p>
-              </div>
+              <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-mono mb-8 text-center">Powered By</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
 
-              {/* 2 — Eclectique 2K26 Symposium Logo */}
-              <div className="flex flex-col items-center gap-2">
-                <img
-                  src="/logo.webp"
-                  alt="Eclectique 2K26 Logo"
-                  className="h-16 md:h-20 w-auto object-contain"
-                  style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
-                />
-                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">Eclectique 2K26</p>
-              </div>
+                {/* 1 — JNTUGV */}
+                <div className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                    <img
+                      src={jntugvLogo}
+                      alt="JNTUGV Official Logo"
+                      className="w-full h-full object-contain"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))" }}
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.25"; }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">JNTUGV</p>
+                </div>
 
-              {/* 3 — Clique Technical Club */}
-              <div className="flex flex-col items-center gap-2">
-                <img
-                  src={cliqueLogo}
-                  alt="Clique – Technical Club"
-                  className="h-16 md:h-20 w-auto object-contain rounded-xl"
-                  style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
-                />
-                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">Clique</p>
-              </div>
+                {/* 2 — Eclectique 2K26 */}
+                <div className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                    <img
+                      src="/logo.webp"
+                      alt="Eclectique 2K26 Logo"
+                      className="w-full h-full object-contain"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Eclectique</p>
+                </div>
 
-              {/* 4 — Cultural Club */}
-              <div className="flex flex-col items-center gap-2">
-                <img
-                  src={culturalClubLogo}
-                  alt="Cultural Club"
-                  className="h-16 md:h-20 w-auto object-contain rounded-xl"
-                  style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
-                />
-                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">Cultural Club</p>
+                {/* 3 — Clique */}
+                <div className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                    <img
+                      src={cliqueLogo}
+                      alt="Clique – Technical Club"
+                      className="w-full h-full object-contain rounded-xl"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Clique</p>
+                </div>
+
+                {/* 4 — Cultural Club */}
+                <div className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                    <img
+                      src={culturalClubLogo}
+                      alt="Cultural Club"
+                      className="w-full h-full object-contain rounded-xl"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Cultural Club</p>
+                </div>
+
               </div>
             </motion.div>
 
-            {/* ── ABOUT PARAGRAPH ──────────────────────────── */}
-            <motion.p
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
+            {/* ── CALL TO ACTION ─────────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.42 }}
-              className="text-gray-300 leading-8 text-lg md:text-xl font-light max-w-3xl mx-auto mb-8"
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-block mt-4"
             >
-              Eclectique 2K26 is the flagship technical symposium of the Department of Electrical &amp; Electronics Engineering at JNTU-GV. Our mission is to bridge the gap between academic theory and industry innovation through competitive events, hands-on workshops, and expert interactions.
-            </motion.p>
-
-
-            <p className="text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase">Join The Revolution</p>
+              <span className="inline-block px-8 py-3 text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase border border-neon-cyan/50 rounded-full bg-neon-cyan/5 shadow-[0_0_15px_rgba(0,243,255,0.2)] hover:shadow-[0_0_25px_rgba(0,243,255,0.4)] hover:bg-neon-cyan/10 transition-all cursor-default">
+                Join The Revolution
+              </span>
+            </motion.div>
           </div>
         </div>
 

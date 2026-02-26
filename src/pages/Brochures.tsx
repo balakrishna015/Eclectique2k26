@@ -30,29 +30,29 @@ const BROCHURES = [
     id: 3,
     title: "WATT VISION",
     category: "Project Expo",
-    image: "../../brochures/wattvision.webp",
-    link: "../../brochures/wattvision.webp"
+    image: "../../brochures/wattvision.png",
+    link: "../../brochures/wattvision.png"
   },
   {
     id: 4,
     title: "BRAIN WAVE",
     category: "Quiz",
-    image: "../../brochures/Brainwave.webp",
-    link: "../../brochures/Brainwave.webp"
+    image: "../../brochures/Brainwave.png",
+    link: "../../brochures/Brainwave.png"
   },
   {
     id: 5,
     title: "Treasure Hunt",
     category: "Treasure Hunt",
-    image: "../../brochures/TreasureHunt.webp",
-    link: "../../brochures/puzzle-mania.webp"
+    image: "../../brochures/TreasureHunt.png",
+    link: "../../brochures/puzzle-mania.png"
   },
   {
     id: 6,
     title: "MIND ARENA",
     category: "Tech Challenge",
-    image: "../../brochures/Mindarena.webp",
-    link: "../../brochures/Mindarena.webp"
+    image: "../../brochures/Mindarena.png",
+    link: "../../brochures/Mindarena.png"
   },
   {
     id: 7,
@@ -65,8 +65,8 @@ const BROCHURES = [
     id: 8,
     title: "ART SPARK",
     category: "Creative Arts",
-    image: "../../brochures/Artspark.webp",
-    link: "../../brochures/Artspark.webp"
+    image: "../../brochures/Artspark.png",
+    link: "../../brochures/Artspark.png"
   }
 ];
 
