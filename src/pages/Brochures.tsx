@@ -58,8 +58,8 @@ const BROCHURES = [
     id: 7,
     title: "PIXEL LENS",
     category: "Photography",
-    image: "../../brochures/Pixel-lens.webp",
-    link: "../../brochures/Pixel-lens.webp"
+    image: "../../brochures/Pixel-lens.png",
+    link: "../../brochures/Pixel-lens.png"
   },
   {
     id: 8,

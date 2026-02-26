@@ -1,6 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Calendar, Users, IndianRupee, Phone, ExternalLink } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import type { EventData } from "../types";
 
@@ -21,6 +21,15 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
       setIsRedirecting(false);
     }, 800);
   };
+
+
+  // Lock body scroll while modal is open
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, []);
 
   if (!isOpen || !data) return null;
 

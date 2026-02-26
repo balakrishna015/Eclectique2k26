@@ -5,6 +5,9 @@ import TextReveal from "../components/TextReveal";
 import EventModal from "../components/EventModal";
 import type { EventData } from "../types";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
+import jntugvLogo from "../assets/jntugv-logo.png";
+import culturalClubLogo from "../assets/culturalclub.png";
+import cliqueLogo from "../assets/T-Shirt LOGO .png";
 
 // --- FULL DATASET ---
 const EVENTS_DATA: EventData[] = [
@@ -368,16 +371,112 @@ const Home = () => {
         {/* ABOUT US - GLASS BLOCK */}
         <div className="max-w-5xl mx-auto mb-12 px-4">
           <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
+            {/* Ambient glow orbs */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-neon-purple/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
-            <h2 className="text-3xl font-display font-bold text-white mb-8 tracking-widest uppercase">About Us</h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-8 rounded-full"></div>
+            {/* ── HEADER ──────────────────────────────────── */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="text-3xl font-display font-bold text-white mb-4 tracking-widest uppercase"
+            >
+              About Us
+            </motion.h2>
 
-            <p className="text-gray-300 leading-8 text-lg md:text-xl font-light max-w-3xl mx-auto">
-              Eclectique 2K26 is the flagship technical symposium of the Department of Electrical & Electronics Engineering at JNTU-GV. Our mission is to bridge the gap between academic theory and industry innovation through competitive events, hands-on workshops, and expert interactions.
-            </p>
-            <p className="mt-8 text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase">Join The Revolution</p>
+            {/* Department name */}
+            <motion.h3
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.12 }}
+              className="text-lg md:text-2xl font-semibold mb-1 tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
+            >
+              Department of Electrical and Electronics Engineering
+            </motion.h3>
+
+            {/* University name */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.22 }}
+              className="text-gray-400 text-sm md:text-base font-light tracking-wide mb-6"
+            >
+              Jawaharlal Nehru Technological University Gurajada Vizianagaram
+            </motion.p>
+
+            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-10 rounded-full" />
+
+            {/* ── FOUR-LOGO GRID : 2×2 mobile / 4×1 desktop ── */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.32 }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-8 md:gap-x-10 items-center justify-items-center mb-10 max-w-3xl mx-auto"
+            >
+              {/* 1 — JNTUGV University Logo */}
+              <div className="flex flex-col items-center gap-2">
+                <img
+                  src={jntugvLogo}
+                  alt="JNTUGV Official Logo"
+                  className="h-16 md:h-20 w-auto object-contain"
+                  style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.25"; }}
+                />
+                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">JNTUGV</p>
+              </div>
+
+              {/* 2 — Eclectique 2K26 Symposium Logo */}
+              <div className="flex flex-col items-center gap-2">
+                <img
+                  src="/logo.webp"
+                  alt="Eclectique 2K26 Logo"
+                  className="h-16 md:h-20 w-auto object-contain"
+                  style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
+                />
+                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">Eclectique 2K26</p>
+              </div>
+
+              {/* 3 — Clique Technical Club */}
+              <div className="flex flex-col items-center gap-2">
+                <img
+                  src={cliqueLogo}
+                  alt="Clique – Technical Club"
+                  className="h-16 md:h-20 w-auto object-contain rounded-xl"
+                  style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
+                />
+                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">Clique</p>
+              </div>
+
+              {/* 4 — Cultural Club */}
+              <div className="flex flex-col items-center gap-2">
+                <img
+                  src={culturalClubLogo}
+                  alt="Cultural Club"
+                  className="h-16 md:h-20 w-auto object-contain rounded-xl"
+                  style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
+                />
+                <p className="text-[9px] text-gray-500 uppercase tracking-[0.18em] font-mono">Cultural Club</p>
+              </div>
+            </motion.div>
+
+            {/* ── ABOUT PARAGRAPH ──────────────────────────── */}
+            <motion.p
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.42 }}
+              className="text-gray-300 leading-8 text-lg md:text-xl font-light max-w-3xl mx-auto mb-8"
+            >
+              Eclectique 2K26 is the flagship technical symposium of the Department of Electrical &amp; Electronics Engineering at JNTU-GV. Our mission is to bridge the gap between academic theory and industry innovation through competitive events, hands-on workshops, and expert interactions.
+            </motion.p>
+
+
+            <p className="text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase">Join The Revolution</p>
           </div>
         </div>
 
