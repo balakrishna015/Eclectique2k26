@@ -4,12 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import TextReveal from "../components/TextReveal";
 import EventModal from "../components/EventModal";
 import type { EventData } from "../types";
-import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
-import jntugvLogo from "../assets/jntugv-logo.png";
-import culturalClubLogo from "../assets/culturalclub.png";
-import cliqueLogo from "../assets/T-Shirt LOGO .png";
-
-// --- FULL DATASET ---
+import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";// --- FULL DATASET ---
 const EVENTS_DATA: EventData[] = [
   // Workshops
   {
@@ -288,15 +283,39 @@ const Home = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-cyan-300 font-bold mb-2 uppercase text-xs md:text-sm tracking-[0.2em]"
+          >
+            Department of Electrical and Electronics Engineering
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-gray-300 font-bold mb-2 text-xs md:text-sm tracking-widest"
+          >
+            JNTU-GV College of Engineering Vizianagaram (A)
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="text-gray-400 font-bold mb-6 text-xs md:text-sm tracking-widest"
+          >
+            Jawaharlal Nehru Technological University Gurajada Vizianagaram
+          </motion.p>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
             className="text-neon-cyan tracking-[0.3em] font-medium mb-4 uppercase text-sm md:text-base"
           >
-            National Level Technical Symposium
+            Presents
           </motion.p>
 
           <motion.h1
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
             className="text-5xl md:text-9xl font-display font-black mb-6 tracking-tighter text-white"
           >
             ECLECTIQUE
@@ -309,7 +328,6 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col items-center gap-3 mt-4"
           >
-            <p className="text-xl md:text-5xl font-bold text-gray-300 tracking-wide">JNTU-GV Vizianagaram</p>
             <p className="text-neon-purple font-bold tracking-widest uppercase border border-neon-purple/30 px-6 py-2 rounded-full bg-neon-purple/5">
               March 04 & 05, 2026
             </p>
@@ -367,137 +385,6 @@ const Home = () => {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {events?.map((ev) => <EventCard key={ev.id} item={ev} />)}
-          </div>
-        </div>
-
-        {/* ABOUT US - GLASS BLOCK */}
-        <div className="max-w-5xl mx-auto mb-12 px-4">
-          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
-            {/* Ambient glow orbs */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-neon-purple/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
-
-            {/* ── HEADER ──────────────────────────────────── */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="text-3xl font-display font-bold text-white mb-4 tracking-widest uppercase"
-            >
-              About Us
-            </motion.h2>
-
-            {/* Department name */}
-            <motion.h3
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg md:text-2xl font-bold mb-1 tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
-            >
-              Department of Electrical and Electronics Engineering
-            </motion.h3>
-
-            {/* University name */}
-            <motion.p
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
-              className="text-gray-400 text-sm md:text-base font-light tracking-wide mb-6"
-            >
-              Jawaharlal Nehru Technological University Gurajada Vizianagaram
-            </motion.p>
-
-            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-10 rounded-full" />
-
-            {/* ── BRAND WALL (FOUR-LOGO GRID) ────────────────── */}
-            <motion.div
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                show: {
-                  opacity: 1,
-                  y: 0,
-                  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.1 }
-                }
-              }}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="bg-white/5 backdrop-blur-xl border-[0.5px] border-white/10 rounded-2xl p-8 mb-12 max-w-3xl mx-auto"
-            >
-              <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-mono mb-8 text-center">POWERED BY</p>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
-
-                {/* 1 — JNTUGV */}
-                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center">
-                    <img
-                      src={jntugvLogo}
-                      alt="JNTUGV Official Logo"
-                      className="w-full h-full object-contain"
-                      style={{ filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))" }}
-                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.25"; }}
-                    />
-                  </div>
-                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">JNTUGV</p>
-                </motion.div>
-
-                {/* 2 — Eclectique 2K26 */}
-                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)]">
-                    <img
-                      src="/logo.webp"
-                      alt="Eclectique 2K26 Logo"
-                      className="w-full h-full object-contain"
-                      style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
-                    />
-                  </div>
-                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Eclectique</p>
-                </motion.div>
-
-                {/* 3 — Clique */}
-                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)]">
-                    <img
-                      src={cliqueLogo}
-                      alt="Clique – Technical Club"
-                      className="w-full h-full object-contain rounded-xl"
-                      style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
-                    />
-                  </div>
-                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Clique</p>
-                </motion.div>
-
-                {/* 4 — Cultural Club */}
-                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center">
-                    <img
-                      src={culturalClubLogo}
-                      alt="Cultural Club"
-                      className="w-full h-full object-contain rounded-xl"
-                      style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
-                    />
-                  </div>
-                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Cultural Club</p>
-                </motion.div>
-
-              </div>
-            </motion.div>
-
-            {/* ── CALL TO ACTION ─────────────────────────────── */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
-              className="inline-block mt-4"
-            >
-              <span className="inline-block px-8 py-3 text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase border border-neon-cyan/50 rounded-full bg-neon-cyan/5 shadow-[0_0_15px_rgba(0,243,255,0.2)] hover:shadow-[0_0_25px_rgba(0,243,255,0.4)] hover:bg-neon-cyan/10 transition-all cursor-default">
-                Join The Revolution
-              </span>
-            </motion.div>
           </div>
         </div>
 

@@ -1,16 +1,12 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronRight, Award, Zap, Users, Building, Target, Cpu, User, BookOpen, Quote, ExternalLink } from "lucide-react";
+import { ChevronRight, Award, Zap, Users, Building, Target, Cpu, BookOpen, Quote, ExternalLink } from "lucide-react";
+import jntugvLogo from "../assets/jntugv-logo.png";
+import culturalClubLogo from "../assets/culturalclub.png";
+import cliqueLogo from "../assets/T-Shirt LOGO .png";
+import eclectiqueLogo from "../assets/Eclectique_logo.webp";
 
 type TabType = "UNIVERSITY" | "DEPARTMENT" | "ACADEMICS" | "RESEARCH" | "ACHIEVEMENTS" | "MEMOIR" | "ECLECTIQUE" | "FACULTY";
-
-interface FacultyMember {
-  name: string;
-  designation: string;
-  role: string;
-  specialization?: string;
-  image?: string;
-}
 
 const TABS: { id: TabType; label: string }[] = [
   { id: "UNIVERSITY", label: "THE UNIVERSITY" },
@@ -23,64 +19,6 @@ const TABS: { id: TabType; label: string }[] = [
   { id: "FACULTY", label: "THE FACULTY" }
 ];
 
-const LEADERSHIP: FacultyMember[] = [
-  { name: "Prof. K. Venkata Subbaiah", designation: "Chief Patron", role: "Hon'ble Vice Chancellor, JNTUGV", specialization: "Mechanical Engineering" },
-  { name: "Prof. K. Srikumar", designation: "Patron", role: "Principal, JNTUGV CEV" },
-  { name: "Dr. V. S. Vakula", designation: "Convenor", role: "Head of the Department, EEE" }
-];
-
-const NON_TEACHING_STAFF = [
-  { name: "Mr. M. S. Raju", role: "Special Grade Mechanic" },
-  { name: "Mr. Ramana", role: "Lab Assistant" },
-  { name: "Mr. Satyanarayana", role: "Lab Assistant" }
-];
-
-const FacultyCard = ({ member, index }: { member: FacultyMember; index: number }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 20 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 0.5, delay: index * 0.1 }}
-    className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 group hover:scale-[1.02] hover:border-neon-cyan/50 hover:shadow-[0_0_30px_rgba(0,255,255,0.1)] transition-all duration-300 relative overflow-hidden flex flex-col items-center text-center h-full"
-  >
-    <div className="absolute top-0 right-0 w-24 h-24 bg-neon-cyan/5 rounded-full blur-2xl group-hover:bg-neon-cyan/10 transition-colors" />
-
-    <div className="w-24 h-24 mb-4 rounded-full border-2 border-white/20 p-1 group-hover:border-neon-cyan transition-colors">
-      {member.image ? (
-        <img src={member.image} alt={member.name} className="w-full h-full object-cover rounded-full" />
-      ) : (
-        <div className="w-full h-full bg-deep-navy rounded-full flex items-center justify-center text-neon-cyan relative overflow-hidden">
-          <div className="absolute inset-0 bg-neon-cyan/10 opacity-0 group-hover:opacity-100 transition-opacity" />
-          <UserPlaceholderSVG />
-        </div>
-      )}
-    </div>
-
-    <div className="mb-2">
-      <span className="text-[10px] uppercase tracking-widest text-neon-cyan font-semibold px-2 py-1 rounded bg-neon-cyan/10 mb-2 inline-block">
-        {member.designation}
-      </span>
-    </div>
-    <h3 className="text-lg font-bold text-white mb-1 group-hover:text-cyan-300 transition-colors">{member.name}</h3>
-    <p className="text-sm text-gray-400 mb-2">{member.role}</p>
-    {member.specialization && (
-      <p className="text-xs text-gray-500 italic mt-auto">Spcalization: {member.specialization}</p>
-    )}
-
-    <div className="w-full mt-4 pt-4 border-t border-white/5 opacity-0 group-hover:opacity-100 transition-opacity flex justify-center">
-      <button className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-wider text-neon-cyan min-h-[44px] min-w-[44px] hover:text-white transition-colors">
-        View Profile <ChevronRight size={14} />
-      </button>
-    </div>
-  </motion.div>
-);
-
-const UserPlaceholderSVG = () => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="w-10 h-10">
-    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-    <circle cx="12" cy="7" r="4"></circle>
-  </svg>
-);
-
 const About = () => {
   const [activeTab, setActiveTab] = useState<TabType>("UNIVERSITY");
 
@@ -91,6 +29,132 @@ const About = () => {
       <div className="absolute bottom-[-10%] left-[-5%] w-[500px] h-[500px] bg-neon-cyan/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
+
+        {/* ABOUT US - HERO BLOCK */}
+        <div className="max-w-5xl mx-auto mb-16 px-4">
+          <div className="bg-white/5 backdrop-blur-lg border border-white/10 rounded-2xl p-8 md:p-16 text-center relative overflow-hidden shadow-2xl">
+            {/* Ambient glow orbs */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-neon-cyan/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-neon-purple/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+            {/* ── HEADER ──────────────────────────────────── */}
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-3xl font-display font-bold text-white mb-4 tracking-widest uppercase"
+            >
+              About Us
+            </motion.h2>
+
+            {/* Department name */}
+            <motion.h3
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+              className="text-lg md:text-2xl font-bold mb-1 tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
+            >
+              Department of Electrical and Electronics Engineering
+            </motion.h3>
+
+            {/* University name */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: 0.22, ease: [0.22, 1, 0.36, 1] }}
+              className="text-gray-400 text-sm md:text-base font-bold tracking-wide mb-6"
+            >
+              Jawaharlal Nehru Technological University Gurajada Vizianagaram
+            </motion.p>
+
+            <div className="w-20 h-1 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-10 rounded-full" />
+
+            {/* ── BRAND WALL (FOUR-LOGO GRID) ────────────────── */}
+            <motion.div
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.1 }
+                }
+              }}
+              initial="hidden"
+              animate="show"
+              className="bg-white/5 backdrop-blur-xl border-[0.5px] border-white/10 rounded-2xl p-8 mb-12 max-w-3xl mx-auto"
+            >
+              <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-mono mb-8 text-center">POWERED BY</p>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
+
+                {/* 1 — JNTUGV */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center">
+                    <img
+                      src={jntugvLogo}
+                      alt="JNTUGV Official Logo"
+                      className="w-full h-full object-contain"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(0, 255, 255, 0.3))" }}
+                      onError={(e) => { (e.currentTarget as HTMLImageElement).style.opacity = "0.25"; }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">JNTUGV</p>
+                </motion.div>
+
+                {/* 2 — Eclectique 2K26 */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)]">
+                    <img
+                      src={eclectiqueLogo}
+                      alt="Eclectique 2K26 Logo"
+                      className="w-full h-full object-contain"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Eclectique</p>
+                </motion.div>
+
+                {/* 3 — Clique */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)]">
+                    <img
+                      src={cliqueLogo}
+                      alt="Clique – Technical Club"
+                      className="w-full h-full object-contain rounded-xl"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(0,255,255,0.3))" }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Clique</p>
+                </motion.div>
+
+                {/* 4 — Cultural Club */}
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center">
+                    <img
+                      src={culturalClubLogo}
+                      alt="Cultural Club"
+                      className="w-full h-full object-contain rounded-xl"
+                      style={{ filter: "drop-shadow(0 0 8px rgba(168,85,247,0.4))" }}
+                    />
+                  </div>
+                  <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Cultural Club</p>
+                </motion.div>
+
+              </div>
+            </motion.div>
+
+            {/* ── CALL TO ACTION ─────────────────────────────── */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.6, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="inline-block mt-4"
+            >
+              <span className="inline-block px-8 py-3 text-neon-cyan font-bold tracking-[0.2em] text-sm uppercase border border-neon-cyan/50 rounded-full bg-neon-cyan/5 shadow-[0_0_15px_rgba(0,243,255,0.2)] hover:shadow-[0_0_25px_rgba(0,243,255,0.4)] hover:bg-neon-cyan/10 transition-all cursor-pointer cursor-default">
+                Join The Revolution
+              </span>
+            </motion.div>
+          </div>
+        </div>
 
         {/* Navigation Tabs */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-4 mb-16 bg-white/5 p-2 rounded-2xl backdrop-blur-md border border-white/20 w-fit mx-auto sticky top-[80px] z-20 shadow-2xl">

@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 const Accommodation = () => {
   const coordinators = [
