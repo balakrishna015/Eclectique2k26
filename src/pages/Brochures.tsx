@@ -9,22 +9,22 @@ const BROCHURES = [
     title: "MAIN BROCHURE",
     category: "Official Guide",
     image: "../../brochures/Main-brochure.webp", // Ensure this image exists
-    link: "../../brochures/Main-brochure.webp",
+    link: "../../brochures/Main-brochure.png",
     isMain: true
   },
   {
     id: 1,
     title: "EV TECHNOLOGY",
     category: "Workshop",
-    image: "../../brochures/ev-workshop.webp",
-    link: "../../brochures/ev-workshop.webp"
+    image: "../../brochures/ev-workshop.png",
+    link: "../../brochures/ev-workshop.png"
   },
   {
     id: 2,
     title: "TABLEAU",
     category: "Workshop",
-    image: "../../brochures/tableau-workshop.webp",
-    link: "../../brochures/tableau-workshop.webp"
+    image: "../../brochures/tableau-workshop.png",
+    link: "../../brochures/tableau-workshop.png"
   },
   {
     id: 3,
