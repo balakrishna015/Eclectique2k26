@@ -23,19 +23,23 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
   };
 
 
-  // Lock body scroll while modal is open
+  // Lock body scroll only while modal is actually open
   useEffect(() => {
-    document.body.style.overflow = "hidden";
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, []);
+  }, [isOpen]);
 
   if (!isOpen || !data) return null;
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 overscroll-contain">
         {/* Redirect Overlay */}
         <AnimatePresence>
           {isRedirecting && (
@@ -63,7 +67,7 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="absolute inset-0 bg-black/90 backdrop-blur-md"
+          className="absolute inset-0 bg-black/90 backdrop-blur-md pointer-events-auto"
           onClick={onClose}
         />
 
@@ -149,7 +153,10 @@ const EventModal = ({ isOpen, onClose, data }: EventModalProps) => {
               ))}
             </div>
 
-            <div className="p-6 overflow-y-auto custom-scrollbar flex-1 bg-[#0a0a0f]">
+            <div
+              className="p-6 overflow-y-auto custom-scrollbar flex-1 bg-[#0a0a0f] pb-20"
+              style={{ WebkitOverflowScrolling: "touch" }}
+            >
               <AnimatePresence mode="wait">
                 {activeTab === "about" && (
                   <motion.div
