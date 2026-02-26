@@ -1,5 +1,5 @@
 import { useState } from "react";
-import LogoPreloader from "../components/LogoPreloader";
+import WarpLoader from "../components/WarpLoader";
 import { ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import TextReveal from "../components/TextReveal";
@@ -52,7 +52,7 @@ const EVENTS_DATA: EventData[] = [
     teamSize: "Max 4 Members",
     time: "Mar 5, 10:00 AM",
     description: "Showcase your innovative projects and ideas to a panel of experts. A platform to display your technical prowess.",
-    rules: ["Prototype demonstration is mandatory",  "Showcase, Explain, and Demonstrate. Just bring your project to the event and show the judges what it can do!"],
+    rules: ["Prototype demonstration is mandatory", "Showcase, Explain, and Demonstrate. Just bring your project to the event and show the judges what it can do!"],
     coordinators: [
       { name: "B. Teja", phone: "+91 83742 30526" },
       { name: "I. Hariharan", phone: "+91 96767 59375" }
@@ -100,7 +100,7 @@ const EVENTS_DATA: EventData[] = [
     teamSize: "Individual",
     time: "Mar 5, 10:00 AM",
     description: "A series of mind-bending technical challenges designed to push your problem-solving skills to the limit.",
-    rules: ["1 Room.","25 Minimum objects in the room.","30 Seconds to memorize objects.","60 Seconds to write objects names."],
+    rules: ["1 Room.", "25 Minimum objects in the room.", "30 Seconds to memorize objects.", "60 Seconds to write objects names."],
     coordinators: [
       { name: "V. K. Praneeth Naidu", phone: "+91 63051 81638" },
       { name: "D. Satya Durga", phone: "" }
@@ -116,7 +116,7 @@ const EVENTS_DATA: EventData[] = [
     teamSize: "Individual",
     time: "Mar 4-5 (All Day)",
     description: "Showcase your unique perspective by posting original photos on our page where the entry with the most genuine likes wins",
-    rules: ["Post original photos on our page","Most genuine likes will win","No fake or bot likes"],
+    rules: ["Post original photos on our page", "Most genuine likes will win", "No fake or bot likes"],
     coordinators: [
       { name: "Ch. Kuldeep", phone: "+91 63019 58061" },
       { name: "K. Sushmitha", phone: "" }
@@ -207,8 +207,14 @@ const Home = () => {
 
   return (
     <>
-      {isLoading && <LogoPreloader onComplete={() => setIsLoading(false)} />}
-      <div className="w-full min-h-screen bg-transparent overflow-y-auto overflow-x-hidden font-sans">
+      <AnimatePresence>
+        {isLoading && <WarpLoader key="warp" onComplete={() => setIsLoading(false)} />}
+      </AnimatePresence>
+      <motion.div
+        className="w-full min-h-screen bg-transparent overflow-y-auto overflow-x-hidden font-sans"
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+      >
 
         {/* ── BLUEPRINT GRID BACKGROUND ─────────────────────────────────────── */}
         <div className="fixed inset-0 z-0 pointer-events-none" aria-hidden>
@@ -394,7 +400,7 @@ const Home = () => {
           data={selectedEvent}
         />
 
-      </div>
+      </motion.div>
 
     </>
   );
