@@ -85,14 +85,14 @@ const STUDENT_SECTIONS: Section[] = [
     title: "Cultural Coordinators",
     members: [
       { name: "Rana Bhargav", role: "Cultural Coordinator", designation: "III B.TECH EEE", roll: "23VV1A0243", image: BhargavImg },
-      { name: "Sameera Begum", role: "Cultural Coordinator", designation: "III B.TECH EEE", roll: "23VV1A0244", image:SameeraImg },
+      { name: "Sameera Begum", role: "Cultural Coordinator", designation: "III B.TECH EEE", roll: "23VV1A0244", image: SameeraImg },
     ]
   },
   {
     title: "Flashmob Coordinators",
     members: [
       { name: "G. Mohan Chandra", role: "Flashmob Coordinator", designation: "III B.TECH EEE", roll: "23VV1A0217", image: MohanImg },
-      { name: "Nujella Laasya", role: "Flashmob Coordinator", designation: "III B.TECH EEE", roll: "23VV1A0236" ,image: LaasyaImg},
+      { name: "Nujella Laasya", role: "Flashmob Coordinator", designation: "III B.TECH EEE", roll: "23VV1A0236", image: LaasyaImg },
     ]
   },
 ];
@@ -303,12 +303,6 @@ const Team = () => {
                 key={i}
                 title={section.title}
                 members={section.members}
-                // Student Coordinators (4 members) → 2×2 on mobile, 4-in-a-row on desktop
-                gridClass={
-                  section.title === "Student Coordinators"
-                    ? "grid grid-cols-2 md:grid-cols-4 gap-x-0 gap-y-10 md:gap-6 w-full max-w-5xl px-0 md:px-4 place-items-center"
-                    : undefined
-                }
               />
             ))}
           </div>
