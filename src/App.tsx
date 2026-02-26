@@ -12,6 +12,7 @@ import Brochures from "./pages/Brochures";
 import ScrollToTop from "./components/ScrollToTop";
 import Footer from "./components/Footer";
 import NotFound from "./pages/NotFound";
+import About from "./pages/About";
 import WarpLoader from "./components/WarpLoader";
 import ParticlesBackground from "./components/ParticlesBackground";
 import GlobalErrorBoundary from "./components/GlobalErrorBoundary";
@@ -49,6 +50,7 @@ const AnimatedRoutes = () => {
       >
         <Routes location={location}>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/events" element={<Events />} />
           <Route path="/team" element={<Team />} />
           <Route path="/stay" element={<Accommodation />} />

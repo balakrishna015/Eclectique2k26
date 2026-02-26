@@ -24,26 +24,27 @@ const FACULTY_SECTIONS: Section[] = [
   {
     title: "Chief Patron",
     members: [{
-      name: "Prof. V. V. Subbarao", role: "Chief Patron", designation: "Vice Chancellor",
+      name: "Prof. V. V.Subbarao", role: "Chief Patron", designation: "Vice Chancellor",
       image: "https://jntugv.edu.in/static/media/vc.1d93f5ebef1ab0a5e73b.png"
     }]
   },
   {
     title: "Patron",
     members: [{
-      name: "Prof. G. Jaya Suma", role: "Patron", designation: "Registrar",
+      name: "Prof. G. JayaSuma", role: "Patron", designation: "Registrar",
       image: "https://drd.jntugv.edu.in/wp-content/uploads/2024/09/Registrar-1.jpg"
     }]
   },
   {
     title: "Co-Patrons",
+    gridClass: "flex flex-row flex-wrap items-center justify-center gap-[60px] md:gap-[120px] max-w-7xl w-full px-2 md:px-0",
     members: [
       {
-        name: "Dr. K. Chandra Bhushana Rao", role: "Co-Patron", designation: "Principal",
+        name: "Dr. K.Chandra Bhushana Rao", role: "Co-Patron", designation: "Principal",
         image: "https://jntugv.edu.in/static/media/dap.63b3d936dee64b3fbae9.jpeg"
       },
       {
-        name: "Prof. G. J. N. Nagaraju", role: "Co-Patron", designation: "Vice Principal, JNTUGV",
+        name: "Prof. G. J. N.Nagaraju", role: "Co-Patron", designation: "Vice Principal, JNTUGV",
         image: "https://res.cloudinary.com/dwmx2ujv6/image/upload/f_auto,q_auto/v1771229471/Prof.G.J.Nagaraju_arnau2.webp"
       }
     ]
@@ -114,7 +115,7 @@ const CircularCard = memo(({ member, index }: { member: TeamMember; index: numbe
         ease: "easeOut",
       }}
       style={{ willChange: "opacity, transform" }}
-      className="group flex flex-col items-center justify-start p-3 md:p-5"
+      className="group flex flex-col items-center justify-start p-3 md:p-5 w-[180px] md:w-[260px]"
     >
       {/* ROLE BADGE */}
       <span className="inline-block text-amber-400 font-mono text-[9px] md:text-[11px] tracking-[0.18em] uppercase font-bold mb-4 px-3 py-1 rounded-full border border-amber-500/30 bg-amber-500/5">
@@ -148,9 +149,11 @@ const CircularCard = memo(({ member, index }: { member: TeamMember; index: numbe
       </div>
 
       {/* TEXT */}
-      <div className="text-center flex flex-col items-center gap-[3px] max-w-[160px] md:max-w-[200px]">
-        {/* FIX: break-words instead of whitespace-nowrap — names like "Y. Chery Nischal" were clipped */}
-        <h3 className="text-white font-bold text-sm md:text-lg tracking-wide uppercase font-sans break-words leading-tight">
+      <div className="text-center flex flex-col items-center gap-[3px] w-full">
+        <h3
+          className="text-white font-bold tracking-wide uppercase font-sans whitespace-nowrap overflow-visible leading-tight"
+          style={{ fontSize: "clamp(0.8rem, 2vw, 1.2rem)" }}
+        >
           {member.name}
         </h3>
         {member.designation && (
@@ -182,7 +185,7 @@ const Section = ({
   gridClass?: string;
 }) => {
   const defaultGrid =
-    "flex flex-row flex-wrap items-center justify-center gap-x-6 gap-y-10 md:gap-16 max-w-6xl w-full px-2 md:px-0";
+    "flex flex-row flex-wrap items-center justify-center gap-[30px] md:gap-[50px] max-w-7xl w-full px-2 md:px-0";
 
   return (
     <motion.div
@@ -290,7 +293,7 @@ const Team = () => {
           {/* FACULTY */}
           <div className="flex flex-col items-center w-full">
             {FACULTY_SECTIONS.map((section, i) => (
-              <Section key={i} title={section.title} members={section.members} />
+              <Section key={i} title={section.title} members={section.members} gridClass={section.gridClass} />
             ))}
           </div>
 
@@ -303,6 +306,7 @@ const Team = () => {
                 key={i}
                 title={section.title}
                 members={section.members}
+                gridClass={section.gridClass}
               />
             ))}
           </div>

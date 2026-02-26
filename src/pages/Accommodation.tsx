@@ -20,24 +20,24 @@ const Accommodation = () => {
           ACCOMMODATION
         </h1>
 
-        {/* Hero Image */}
+        {/* Hero Image
         <div className="w-full h-64 md:h-96 bg-gray-800 rounded-2xl mb-12 overflow-hidden relative shadow-2xl border border-white/10">
           <ImageWithSkeleton
-            src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?q=80&w=2069"
+            src=""
             alt="Hostel"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
             <h2 className="text-3xl md:text-5xl font-display font-bold text-white/90">COMFORT & CONVENIENCE</h2>
           </div>
-        </div>
+        </div> */}
 
         {/* Pricing Block */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 items-center">
           <div className="text-left">
             <p className="text-gray-300 text-lg leading-relaxed mb-6">
               We provide comfortable accommodation for participants coming from distant locations.
-              Separate arrangements are available for boys and girls within the university campus or nearby authorized hostels.
+              Arrangements such as Food & Stay  are available for boys and girls within the university campus or nearby Campus hostels.
             </p>
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-3 text-neon-cyan">

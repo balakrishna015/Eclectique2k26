@@ -268,6 +268,8 @@ const Home = () => {
           )}
         </AnimatePresence>
 
+        {/* Content */}
+
         {/* Glow Orbs */}
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.3, 0.5, 0.3] }}
@@ -307,7 +309,7 @@ const Home = () => {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="flex flex-col items-center gap-3 mt-4"
           >
-            <p className="text-xl md:text-2xl font-light text-gray-300 tracking-wide">JNTU-GV Vizianagaram</p>
+            <p className="text-xl md:text-5xl font-bold text-gray-300 tracking-wide">JNTU-GV Vizianagaram</p>
             <p className="text-neon-purple font-bold tracking-widest uppercase border border-neon-purple/30 px-6 py-2 rounded-full bg-neon-purple/5">
               March 04 & 05, 2026
             </p>
@@ -392,7 +394,7 @@ const Home = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-              className="text-lg md:text-2xl font-semibold mb-1 tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
+              className="text-lg md:text-2xl font-bold mb-1 tracking-wide leading-tight text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-cyan-300"
             >
               Department of Electrical and Electronics Engineering
             </motion.h3>
@@ -412,18 +414,25 @@ const Home = () => {
 
             {/* ── BRAND WALL (FOUR-LOGO GRID) ────────────────── */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                show: {
+                  opacity: 1,
+                  y: 0,
+                  transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1], staggerChildren: 0.1 }
+                }
+              }}
+              initial="hidden"
+              whileInView="show"
               viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="bg-white/5 border border-white/10 rounded-2xl p-8 backdrop-blur-md mb-12 max-w-3xl mx-auto shadow-[0_0_30px_rgba(0,0,0,0.5)]"
+              className="bg-white/5 backdrop-blur-xl border-[0.5px] border-white/10 rounded-2xl p-8 mb-12 max-w-3xl mx-auto"
             >
-              <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-mono mb-8 text-center">Powered By</p>
+              <p className="text-[10px] text-gray-500 uppercase tracking-[0.3em] font-mono mb-8 text-center">POWERED BY</p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 items-center justify-items-center">
 
                 {/* 1 — JNTUGV */}
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center">
                     <img
                       src={jntugvLogo}
                       alt="JNTUGV Official Logo"
@@ -433,11 +442,11 @@ const Home = () => {
                     />
                   </div>
                   <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">JNTUGV</p>
-                </div>
+                </motion.div>
 
                 {/* 2 — Eclectique 2K26 */}
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)]">
                     <img
                       src="/logo.webp"
                       alt="Eclectique 2K26 Logo"
@@ -446,11 +455,11 @@ const Home = () => {
                     />
                   </div>
                   <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Eclectique</p>
-                </div>
+                </motion.div>
 
                 {/* 3 — Clique */}
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center shadow-[0_0_15px_rgba(0,255,255,0.2)]">
                     <img
                       src={cliqueLogo}
                       alt="Clique – Technical Club"
@@ -459,11 +468,11 @@ const Home = () => {
                     />
                   </div>
                   <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Clique</p>
-                </div>
+                </motion.div>
 
                 {/* 4 — Cultural Club */}
-                <div className="flex flex-col items-center gap-3 w-full">
-                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] flex items-center justify-center">
+                <motion.div variants={{ hidden: { opacity: 0, y: 15 }, show: { opacity: 1, y: 0, transition: { duration: 0.5 } } }} className="flex flex-col items-center gap-3 w-full">
+                  <div className="aspect-square w-full max-w-[5rem] md:max-w-[6rem] bg-white rounded-xl p-3 flex items-center justify-center">
                     <img
                       src={culturalClubLogo}
                       alt="Cultural Club"
@@ -472,7 +481,7 @@ const Home = () => {
                     />
                   </div>
                   <p className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-mono text-center">Cultural Club</p>
-                </div>
+                </motion.div>
 
               </div>
             </motion.div>

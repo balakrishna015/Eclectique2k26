@@ -30,5 +30,6 @@ export interface TeamMember {
 export interface Section {
   title: string;
   members: TeamMember[];
+  gridClass?: string;
 }
 
