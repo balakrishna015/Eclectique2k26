@@ -123,7 +123,7 @@ const CircularCard = memo(({ member, index }: { member: TeamMember; index: numbe
 
       {/* CIRCLE — glows on hover */}
       <div
-        className="relative w-[140px] h-[140px] md:w-[180px] md:h-[180px] mb-4"
+        className="relative w-[160px] h-[160px] md:w-[180px] md:h-[180px] mb-4"
         style={{ transform: "translateZ(0)" }}
       >
         {/* Glow ring — animates on group hover */}
