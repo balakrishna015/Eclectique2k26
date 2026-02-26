@@ -40,7 +40,7 @@ const FACULTY_SECTIONS: Section[] = [
     members: [
       {
         name: "Dr. K. Chandra Bhushana Rao", role: "Co-Patron", designation: "Principal",
-        image: "https://jntugvcev.edu.in/wp-content/uploads/2024/12/Dr.-RRR-Principal-page.jpeg"
+        image: "https://jntugv.edu.in/static/media/dap.63b3d936dee64b3fbae9.jpeg"
       },
       {
         name: "Prof. G. J. N. Nagaraju", role: "Co-Patron", designation: "Vice Principal, JNTUGV",
