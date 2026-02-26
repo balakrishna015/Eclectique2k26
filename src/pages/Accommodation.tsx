@@ -53,9 +53,25 @@ const Accommodation = () => {
             <div className="absolute top-0 right-0 p-4 opacity-10">
               <svg width="100" height="100" viewBox="0 0 24 24" fill="white"><path d="M2 22v-8h20v8H2zm2-2h16v-4H4v4zm6-12h4v2h-4V8zm0 4h4v2h-4v-2zm-6-8h16v2H4V4z" /></svg>
             </div>
-            <h3 className="text-xl font-display font-bold text-white mb-4">TARIFF DETAILS</h3>
-            <div className="text-4xl font-bold text-neon-cyan mb-2">₹ 500/- <span className="text-sm text-gray-400 font-normal">(Approx)</span></div>
-            <p className="text-neon-purple font-medium uppercase tracking-wider text-sm mb-6">Per Person / For Two Days</p>
+            <h3 className="text-xl font-display font-bold text-white mb-5">TARIFF DETAILS</h3>
+
+            {/* Two pricing tiers */}
+            <div className="grid grid-cols-2 gap-3 mb-5">
+              {/* 1-Day */}
+              <div className="flex flex-col items-center p-4 rounded-lg border border-white/10 bg-white/5">
+                <span className="text-2xl font-bold text-white mb-1">₹ 300/-</span>
+                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Per Person</span>
+                <span className="mt-2 text-xs text-neon-purple font-semibold uppercase tracking-wider">1 Day</span>
+              </div>
+              {/* 2-Day — highlighted */}
+              <div className="flex flex-col items-center p-4 rounded-lg border border-neon-cyan/50 bg-neon-cyan/5 relative">
+                <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 text-[9px] bg-neon-cyan text-black font-bold px-2 py-0.5 rounded-full uppercase tracking-wider whitespace-nowrap">Full Fest</span>
+                <span className="text-2xl font-bold text-neon-cyan mb-1">₹ 500/-</span>
+                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-medium">Per Person</span>
+                <span className="mt-2 text-xs text-neon-purple font-semibold uppercase tracking-wider">2 Days</span>
+              </div>
+            </div>
+
             <div className="bg-white/5 p-3 rounded text-sm text-gray-300 mb-6">
               Includes: Stay + Food Implications
             </div>
