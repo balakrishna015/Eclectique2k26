@@ -244,7 +244,7 @@ const TeamSkeleton = () => (
 // DIVIDER between Faculty and Students
 // ─────────────────────────────────────────────
 const FacultyStudentDivider = () => (
-  <div className="w-full max-w-2xl flex items-center gap-4 my-8 mb-20 px-6">
+  <div className="w-full max-w-2xl mx-auto flex items-center gap-4 my-8 mb-20 px-6">
     <div className="flex-1 h-[1px] bg-gradient-to-r from-transparent to-neon-cyan/40" />
     <span className="text-neon-cyan/50 text-[10px] font-mono tracking-[0.3em] uppercase">
       Student Team
