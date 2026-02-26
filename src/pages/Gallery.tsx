@@ -6,14 +6,14 @@ import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 import MobileGalleryItem from "../components/MobileGalleryItem";
 
 const GALLERY_IMAGES = [
-  { id: 1, src: "../../gallery/clique.jpeg", alt: "CLIQUE", desc: "Community & Bonding", date: "2026.03.05" },
-  { id: 2, src: "../../gallery/culturalclub.webp", alt: "CULTURAL CLUB", desc: "Artistic Expression", date: "2026.03.05" },
-  { id: 3, src: "../../gallery/mindstorming.webp", alt: "MIND STORMING", desc: "Innovation Hub", date: "2026.03.05" },
-  { id: 4, src: "../../gallery/tarang.webp", alt: "TARANG", desc: "Waves of Talent", date: "2026.03.06" },
-  { id: 5, src: "../../gallery/dandiya.webp", alt: "DANDIYA", desc: "Traditional Beats", date: "2026.03.06" },
-  { id: 6, src: "../../gallery/culturals.webp", alt: "CULTURALS", desc: "Stage Performance", date: "2026.03.06" },
-  { id: 7, src: "../../gallery/ekthara.webp", alt: "EKTHARA", desc: "Musical Night", date: "2026.03.06" },
-  { id: 8, src: "../../gallery/flashmob.webp", alt: "FLASHMOB", desc: "Street Energy", date: "2026.03.05" },
+  {id: 1, src: "../../gallery/Eclectique2k24.jpg", alt: "Eclectique2k24", desc: "2024 TECHNICAL SYMPOSIUM", date: "2024.02.26" },
+  { id: 2, src: "../../gallery/Ekthara.webp", alt: "EKTHARA XXV", desc: "2025 TECHNICAL SYMPOSIUM", date: "2025.02.17" },
+  { id: 3, src: "../../gallery/flashmob.png", alt: "FLASHMOB", desc: "Street Energy", date: "2026.03.05" },
+  { id: 4, src: "../../gallery/faraday.jpg", alt: "Faraday", desc: "Faraday Memorial", date: "2025.09.22" },
+  { id: 5, src: "../../gallery/clique.jpeg", alt: "CLIQUE", desc: "Student Club", date: "2026.03."},
+  { id: 6, src: "../../gallery/tarang.jpeg", alt: "TARANG", desc: "Waves of Talent", date: "2026.03.06" },
+  { id: 7, src: "../../gallery/culturals.webp", alt: "CULTURALS", desc: "Stage Performance", date: "2026.03.06" },
+ 
 ];
 
 
