@@ -1,8 +1,8 @@
-import { useRef, useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useEffect } from "react";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import { IndianRupee, Users, Clock, ExternalLink, FileText } from "lucide-react";
+import { IndianRupee, Users, Clock, FileText } from "lucide-react";
 import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -42,7 +42,7 @@ const EVENTS: EventData[] = [
       { name: "Kanda Varalakshmi", phone: "+91 81859 03589" }
     ],
     regLink: "https://forms.gle/wbWZJX9VEMktp1hy5",
-     brochureLink: "../../brochures/tableau-workshop.pdf",
+    brochureLink: "../../brochures/tableau-workshop.pdf",
     rules: []
   },
   {
@@ -60,7 +60,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/d2HWknhhBM9fuPvn8",
 
-     brochureLink: "../../brochures/watt-vision.pdf",
+    brochureLink: "../../brochures/watt-vision.pdf",
     rules: []
   },
   {
@@ -78,7 +78,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/MRzLk7tL9FENZKcX6",
 
-     brochureLink: "../../brochures/brain-wave.pdf",
+    brochureLink: "../../brochures/brain-wave.pdf",
     rules: []
   },
   {
@@ -96,7 +96,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/uQe6hZi75j54Gwcf9",
 
-     brochureLink: "../../brochures/Treasure_Hunt.pdf",
+    brochureLink: "../../brochures/Treasure_Hunt.pdf",
     rules: []
   },
   {
@@ -114,7 +114,7 @@ const EVENTS: EventData[] = [
     ],
     regLink: "https://forms.gle/mFzmAUut1Mq5qw8JA",
 
-     brochureLink: "../../brochures/mind-arena.pdf",
+    brochureLink: "../../brochures/mind-arena.pdf",
     rules: []
   },
   {
@@ -131,7 +131,7 @@ const EVENTS: EventData[] = [
       { name: "K. Sushmitha", phone: "+91 63019 58061" }
     ],
     regLink: "https://forms.gle/UTZbdAiutHrHZRtP9",
-     brochureLink: "../../brochures/Pixel-lens.png",
+    brochureLink: "../../brochures/Pixel-lens.png",
     rules: []
   },
   {
@@ -147,7 +147,7 @@ const EVENTS: EventData[] = [
       { name: "Vakapalili Sanjay", phone: "+91 73966 72320" }, { name: "Dupana Bhavya", phone: "+91 73966 72320" }
     ],
     regLink: "https://forms.gle/GRD9pcYu5rts34PE7",
-     brochureLink: "../../brochures/art-spark.pdf",
+    brochureLink: "../../brochures/art-spark.pdf",
     rules: []
   }
 ];
@@ -155,15 +155,6 @@ const EVENTS: EventData[] = [
 export default function Events() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
-  const [isRedirecting, setIsRedirecting] = useState(false);
-
-  const handleRegister = (link: string) => {
-    setIsRedirecting(true);
-    setTimeout(() => {
-      window.open(link, "_blank");
-      setIsRedirecting(false);
-    }, 800);
-  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -194,28 +185,6 @@ export default function Events() {
 
   return (
     <div className="min-h-screen bg-transparent">
-
-      {/* Redirect Overlay */}
-      <AnimatePresence>
-        {isRedirecting && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
-          >
-            <div className="flex flex-col items-center gap-6">
-              <div className="relative w-16 h-16">
-                <div className="absolute inset-0 rounded-full border-t-2 border-neon-cyan animate-spin"></div>
-                <div className="absolute inset-2 rounded-full border-b-2 border-neon-purple animate-spin-slow"></div>
-              </div>
-              <p className="text-neon-cyan font-display tracking-widest text-lg animate-pulse">
-                REDIRECTING TO SECURE REGISTRATION...
-              </p>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
 
       {/* Intro Section (Stick to Top) */}
       <div className="h-screen w-full flex items-center justify-center relative z-10 border-b border-white/10">
@@ -308,10 +277,10 @@ export default function Events() {
 
                 <div className="flex gap-4">
                   <button
-                    onClick={() => handleRegister(event.regLink)}
-                    className="px-8 py-3 bg-neon-cyan/10 border border-neon-cyan/30 text-neon-cyan font-bold tracking-widest hover:bg-neon-cyan hover:text-deep-navy transition-all duration-300 rounded-sm flex items-center gap-2"
+                    disabled
+                    className="px-8 py-3 border border-white/20 text-white/50 font-bold tracking-widest cursor-not-allowed uppercase rounded-sm flex items-center gap-2 opacity-50"
                   >
-                    REGISTER <ExternalLink size={16} />
+                    REGISTRATIONS CLOSED
                   </button>
 
 
@@ -386,10 +355,10 @@ export default function Events() {
 
               <div className="flex flex-col sm:flex-row gap-3">
                 <button
-                  onClick={() => handleRegister(event.regLink)}
-                  className="flex-1 py-3 bg-neon-cyan text-deep-navy font-bold text-center tracking-widest uppercase rounded-sm hover:bg-white transition-colors"
+                  disabled
+                  className="flex-1 py-3 border border-white/20 text-white/50 font-bold text-center tracking-widest uppercase rounded-sm cursor-not-allowed opacity-50"
                 >
-                  Register
+                  REGISTRATIONS CLOSED
                 </button>
 
                 {event.brochureLink && (

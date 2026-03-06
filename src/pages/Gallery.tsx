@@ -6,12 +6,12 @@ import ImageWithSkeleton from "../components/ui/ImageWithSkeleton";
 import MobileGalleryItem from "../components/MobileGalleryItem";
 
 const GALLERY_IMAGES = [
-  { id: 1, src: "../../gallery/Eclectique2k24.jpg", alt: "Eclectique2k24", desc: "2024 TECHNICAL SYMPOSIUM", date: "2024.02.26" },
-  { id: 2, src: "../../gallery/culturals.jpg", alt: "CULTURALS", desc: "Stage Performance", date: "2026.03.06" },
-  { id: 3, src: "../../gallery/flashmob.png", alt: "FLASHMOB", desc: "Street Energy", date: "2026.03.05" },
+  { id: 1, src: "../../gallery/Eclectique2k26.webp", alt: "Eclectique2k26", desc: "2026 TECHNICAL SYMPOSIUM", date: "2026.03.04" },
+  { id: 2, src: "../../gallery/culturals.png", alt: "CULTURALS", desc: "Stage Performance", date: "2026.03.04" },
+  { id: 3, src: "../../gallery/flashmob.jpeg", alt: "FLASHMOB", desc: "Street Energy", date: "2026.03.05" },
   { id: 4, src: "../../gallery/faraday.jpg", alt: "Faraday", desc: "Faraday Memorial", date: "2025.09.22" },
-  { id: 5, src: "../../gallery/clique.jpeg", alt: "CLIQUE", desc: "Student Club", date: "2026.03."},
-  { id: 6, src: "../../gallery/tarang.jpeg", alt: "TARANG", desc: "Waves of Talent", date: "2026.03.06" },
+  { id: 5, src: "../../gallery/clique.jpeg", alt: "CLIQUE", desc: "Student Club", date: "2024.10.26"},
+  { id: 6, src: "../../gallery/tarang.jpeg", alt: "TARANG", desc: "Waves of Talent", date: "2026.02.13" },
 ];
 
 

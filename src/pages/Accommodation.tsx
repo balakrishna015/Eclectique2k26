@@ -70,18 +70,16 @@ const Accommodation = () => {
                 <span className="mt-2 text-xs text-neon-purple font-semibold uppercase tracking-wider">2 Days</span>
               </div>
             </div>
+           
 
             <div className="bg-white/5 p-3 rounded text-sm text-gray-300 mb-6">
               Includes: Stay + Food Implications
             </div>
-            <a
-              href="https://tinyurl.com/45ku73nr"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block w-full bg-neon-cyan text-deep-navy py-3 rounded font-bold tracking-widest hover:bg-white transition-colors duration-300"
-            >
-              BOOK ACCOMMODATION
-            </a>
+            
+              <div className="block w-full bg-white/10 text-gray-500 py-3 rounded font-bold tracking-widest cursor-not-allowed text-center border border-white/10">
+                REGISTRATIONS CLOSED
+            </div>
+            
           </div>
         </div>
 

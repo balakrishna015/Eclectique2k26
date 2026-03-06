@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ChevronDown } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import TextReveal from "../components/TextReveal";
 import EventModal from "../components/EventModal";
 import type { EventData } from "../types";
@@ -140,15 +140,6 @@ const EVENTS_DATA: EventData[] = [
 
 const Home = () => {
   const [selectedEvent, setSelectedEvent] = useState<EventData | null>(null);
-  const [isRedirecting, setIsRedirecting] = useState(false);
-
-  const handleRegister = (link: string) => {
-    setIsRedirecting(true);
-    setTimeout(() => {
-      window.open(link, "_blank");
-      setIsRedirecting(false);
-    }, 800);
-  };
 
   const workshops = EVENTS_DATA.filter(e => e.id <= 2);
   const events = EVENTS_DATA.filter(e => e.id > 2);
@@ -191,10 +182,10 @@ const Home = () => {
             Know More
           </button>
           <button
-            onClick={() => handleRegister(item.regLink)}
-            className="px-4 py-1.5 bg-neon-purple text-white text-xs font-bold tracking-wider rounded hover:bg-white hover:text-neon-purple transition-all uppercase"
+            disabled
+            className="px-4 py-1.5 border border-white/20 text-white/50 text-xs font-bold tracking-wider rounded cursor-not-allowed uppercase opacity-50"
           >
-            Register
+            REGISTRATIONS CLOSED
           </button>
         </div>
       </div>
@@ -240,28 +231,6 @@ const Home = () => {
       <div className="relative h-screen w-full flex items-center justify-center overflow-hidden text-white bg-transparent">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-900 via-deep-navy to-black opacity-80" />
         <div className="absolute top-0 left-0 w-full h-full bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20" />
-
-        {/* Redirect Overlay */}
-        <AnimatePresence>
-          {isRedirecting && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-xl"
-            >
-              <div className="flex flex-col items-center gap-6">
-                <div className="relative w-16 h-16">
-                  <div className="absolute inset-0 rounded-full border-t-2 border-neon-cyan animate-spin"></div>
-                  <div className="absolute inset-2 rounded-full border-b-2 border-neon-purple animate-spin-slow"></div>
-                </div>
-                <p className="text-neon-cyan font-display tracking-widest text-lg animate-pulse">
-                  REDIRECTING TO SECURE REGISTRATION...
-                </p>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
 
         {/* Content */}
 
